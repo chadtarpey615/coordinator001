@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://chads:Sony1234@cluster0.06sav.mongodb.net/Runners?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
+}
