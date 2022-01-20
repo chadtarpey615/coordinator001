@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand text-white" href="#">Run-Fit</a>
+                    <Link className="navbar-brand text-white" to="/signup">Run-Fit</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -33,7 +35,7 @@ const Navbar = () => {
 
                         <ul className="navbar-nav ">
                             <li className="nav-item">
-                                <a className="nav-link active text-white" aria-current="page" href="#">Sign Up</a>
+                                <Link className="nav-link active text-white" aria-current="page" to="/signup">Sign Up</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link active text-white" aria-current="page" href="#">Sign In</a>
