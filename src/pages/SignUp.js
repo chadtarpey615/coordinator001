@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { register } from "../context/users/UserActions"
 
 const SignUp = () => {
     const [loginData, setLoginData] = useState({
@@ -12,30 +13,42 @@ const SignUp = () => {
 
     const onChange = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })
 
+    const onSubmit = async e => {
+        e.preventDefault()
+        console.log("hiiit")
+        if (password !== password2)
+        {
+            alert("invalid info")
+        } else
+        {
+            register({ username, email, password })
+        }
+    }
+
     return (
         <div>
             <h1 className="d-flex justify-content-center mt-5">Sign up </h1>
-            <form>
+            <form onSubmit={e => onSubmit(e)}>
                 <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">User Name</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={username} onChange={e => onChange(e)} />
+                    <label className="form-label">User Name</label>
+                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value={username} onChange={e => onChange(e)} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Email address</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={e => onChange(e)} />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    <label className="form-label">Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} />
                 </div>
                 <div className="mb-3">
-                    <label for="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={e => onChange(e)} />
-                </div>
-                <div className="mb-3">
-                    <label for="exampleInputPassword1" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" value={password2} onChange={e => onChange(e)} />
+                    <label className="form-label">Confirm Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={password2} onChange={e => onChange(e)} />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
+
             </form>
         </div>
     )
