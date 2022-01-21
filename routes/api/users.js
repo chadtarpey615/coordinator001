@@ -6,6 +6,7 @@ const config = require("config")
 const User = require("../../models/User")
 
 router.post("/", async (req, res) => {
+    console.log("User Routes hitt")
     const { username, email, password } = req.body;
 
     try
@@ -49,3 +50,5 @@ router.post("/", async (req, res) => {
         res.status(500).send("Server Error")
     }
 })
+
+module.exports = router
