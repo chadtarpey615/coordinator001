@@ -2,8 +2,8 @@ const express = require("express")
 const connectDB = require("./config/db")
 const app = express();
 const path = require("path");
-const userRoutes = require("./routes/api/users")
-const PORT = 5000
+// const userRoutes = require("./routes/api/users")
+const PORT = 3001
 
 
 // connect to database
@@ -12,12 +12,12 @@ connectDB()
 // init middleware
 app.use(express.json({ extended: false }))
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
 // routes 
-app.use("/api/users", userRoutes)
+app.use("/api/users", require("./routes/api/users"))
 
 // serve static a in production
 // if (process.env.NODE_ENV === "production")
@@ -30,5 +30,7 @@ app.use("/api/users", userRoutes)
 //     })
 // }
 // start the server
-
-app.listen(5000, () => console.log(`Server running on port ${PORT}!`))
+// app.listen(() => {
+//     console.log(`App listening on port ${PORT}`)
+// })
+app.listen(PORT, () => console.log(`Server running on port ${PORT}!`));

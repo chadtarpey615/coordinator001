@@ -1,7 +1,6 @@
 import axios from "axios";
 
-
-export const register = ({ username, email, password }) => async dispatch => {
+export const register = async ({ username, email, password }) => {
     console.log("copntessrtsf")
     const config = {
         headers: {
@@ -15,6 +14,10 @@ export const register = ({ username, email, password }) => async dispatch => {
     try
     {
         const response = await axios.post("/api/users", signupInfo, config)
+        // dispatch({
+        //     type: "SIGNUP_USER",
+        //     payload: response.data
+        // })
         console.log(response)
 
     } catch (error)
@@ -22,3 +25,5 @@ export const register = ({ username, email, password }) => async dispatch => {
         console.log(error)
     }
 }
+
+

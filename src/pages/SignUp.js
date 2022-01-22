@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import UserContext from "../context/users/UserContext"
 import { register } from "../context/users/UserActions"
 
 const SignUp = () => {
+    const { user, isLoading, dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         username: "",
         email: "",
@@ -9,12 +11,18 @@ const SignUp = () => {
         password2: ""
     })
 
+    // useEffect(() => {
+    //     console.log(UserContext)
+    // })
+
     const { username, email, password, password2 } = loginData
 
     const onChange = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault()
+
+        // dispatch({ type: "SIGNUP_USER" })
         console.log("hiiit")
         if (password !== password2)
         {

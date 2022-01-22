@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
         }
 
         user = new User({
-            name,
+            username,
             email,
             password
         })
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
 
     } catch (error)
     {
-        console.log(err.message);
+        console.log(error.message);
         res.status(500).send("Server Error")
     }
 })
