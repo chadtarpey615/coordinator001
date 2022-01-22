@@ -27,3 +27,11 @@ export const register = async ({ username, email, password }) => {
 }
 
 
+export const login = async ({ email, password }) => {
+
+
+
+    const response = await axios.get("/api/user")
+}
+
+
