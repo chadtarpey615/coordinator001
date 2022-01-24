@@ -3,7 +3,7 @@ import { UserProvider } from "./context/users/UserContext"
 import Navbar from "./components/Navbar"
 import SignUp from "./pages/SignUp"
 import Login from "./pages/Login"
-import Calendar from "./pages/Calendar"
+import Calendars from "./pages/Calendars"
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/calendar" element={<Calendars />} />
         </Routes>
       </Router>
     </UserProvider>
