@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import UserContext from "../context/users/UserContext"
-import { register } from "../context/users/UserActions"
+import { register, login } from "../context/users/UserActions"
 
 const Login = () => {
     const { user, isLoading, dispatch } = useContext(UserContext)
@@ -13,7 +13,7 @@ const Login = () => {
     //     console.log(UserContext)
     // })
 
-    const { username, email, password, password2 } = loginData
+    const { email, password } = loginData
 
     const onChange = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })
 
@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1 className="d-flex justify-content-center mt-5">Sign up </h1>
+            <h1 className="d-flex justify-content-center mt-5">Log In </h1>
             <form onSubmit={e => onSubmit(e)}>
 
                 <div className="mb-3">

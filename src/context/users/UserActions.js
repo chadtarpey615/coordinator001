@@ -28,10 +28,15 @@ export const register = async ({ username, email, password }) => {
 
 
 export const login = async ({ email, password }) => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
 
 
 
-    const response = await axios.get("/api/user")
+    const response = await axios.post("/api/users/login", { email, password }, config)
 }
 
 

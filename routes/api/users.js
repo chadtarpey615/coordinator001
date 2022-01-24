@@ -43,6 +43,8 @@ router.post("/", async (req, res) => {
             }
         )
 
+        user.save()
+
 
     } catch (error)
     {
@@ -52,8 +54,15 @@ router.post("/", async (req, res) => {
 })
 
 
-router.get("/", async (req, res) => {
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
 
+    res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email
+    })
 })
 
 module.exports = router

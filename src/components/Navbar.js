@@ -38,7 +38,7 @@ const Navbar = () => {
                                 <Link className="nav-link active text-white" aria-current="page" to="/signup">Sign Up</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active text-white" aria-current="page" href="#">Sign In</a>
+                                <Link className="nav-link active text-white" aria-current="page" to="/login">Sign In</Link>
                             </li>
                         </ul>
 
