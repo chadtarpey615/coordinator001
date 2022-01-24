@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar"
 import SignUp from "./pages/SignUp"
 import Login from "./pages/Login"
 import Calendars from "./pages/Calendars"
-
+import "./App.css"
 function App() {
   return (
     <UserProvider>
