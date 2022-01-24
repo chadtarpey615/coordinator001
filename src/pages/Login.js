@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
 import { register, login } from "../context/users/UserActions"
 
@@ -9,9 +10,8 @@ const Login = () => {
         password: "",
     })
 
-    // useEffect(() => {
-    //     console.log(UserContext)
-    // })
+
+    const history = useNavigate()
 
     const { email, password } = loginData
 
@@ -25,6 +25,7 @@ const Login = () => {
 
 
         login({ email, password })
+        history("/calendar")
 
     }
 
