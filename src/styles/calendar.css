@@ -1,0 +1,29 @@
+.calendar-container {
+    display: grid;
+    background: linear-gradient(to right, #072f5f, #1261a0);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.DayPicker-Month {
+    height: 60vh;
+    width: 40vw;
+    margin: 20px 30px;
+    color: rgb(46, 27, 27);
+}
+
+.DayPicker-Day {
+    border: 2px solid rgb(92, 86, 86);
+}
+
+.run-form input {
+    margin: 22px auto;
+    width: 30vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+.run-form button {
+    margin-top: 12px;
+    width: 20vw;
+    height: 5vh;
+    border-radius: 10px;
+}

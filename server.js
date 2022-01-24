@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 
 // routes 
 app.use("/api/users", require("./routes/api/users"))
+// app.use("/api/events", require("./routes/api/events"))
 
 // serve static a in production
 // if (process.env.NODE_ENV === "production")
