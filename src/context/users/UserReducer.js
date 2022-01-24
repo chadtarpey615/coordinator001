@@ -9,6 +9,16 @@ const userReducer = (state, action) => {
                 isLoading: false
             }
 
+        case "LOGIN_USER":
+            return {
+                ...state,
+                user: action.payload,
+                isLoading: false
+            }
+
+        case "LOGOUT_USER":
+            return {}
+
         default:
             return state
     }

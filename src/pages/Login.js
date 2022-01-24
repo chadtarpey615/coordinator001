@@ -20,11 +20,16 @@ const Login = () => {
     const onSubmit = async e => {
         e.preventDefault()
 
-        // dispatch({ type: "SIGNUP_USER" })
+
         console.log("hiiit")
 
 
-        login({ email, password })
+        const userInfo = await login({ email, password })
+
+        dispatch({
+            type: "LOGIN_USER",
+            payload: userInfo
+        })
         history("/calendar")
 
     }

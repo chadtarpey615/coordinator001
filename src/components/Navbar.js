@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from "react-router-dom";
+import UserContext from '../context/users/UserContext';
 
 
 const Navbar = () => {
+    const { user, isLoading, dispatch } = useContext(UserContext)
+
+
+    useEffect(() => {
+        console.log(user)
+    })
+
+    const logout = () => {
+        dispatch({
+            type: "LOGOUT_USER"
+        })
+    }
+
+    // const { user } = user
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
@@ -32,15 +47,27 @@ const Navbar = () => {
                             </li> */}
 
                         </ul>
+                        {user ? (
+                            <ul className="navbar-nav ">
+                                <li className="nav-item">
+                                    <li className="nav-link active text-white" aria-current="page">Welcome {user.user.username}</li>
+                                </li>
+                                <li className="nav-item">
+                                    <li onClick={logout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</li>
+                                </li>
+                            </ul>
+                        ) : (
 
-                        <ul className="navbar-nav ">
-                            <li className="nav-item">
-                                <Link className="nav-link active text-white" aria-current="page" to="/signup">Sign Up</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active text-white" aria-current="page" to="/login">Sign In</Link>
-                            </li>
-                        </ul>
+                                <ul className="navbar-nav ">
+                                    <li className="nav-item">
+                                        <Link className="nav-link active text-white" aria-current="page" to="/signup">Sign Up</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link active text-white" aria-current="page" to="/login">Sign In</Link>
+                                    </li>
+                                </ul>
+                            )}
+
 
                     </div>
                 </div>
