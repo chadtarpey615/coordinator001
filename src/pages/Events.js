@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import EventContext from '../context/events/EventContext'
 import { getEvents } from '../context/events/EventActions'
 
+
 const Events = () => {
     const { events, isLoading, dispatch } = useContext(EventContext)
 
@@ -17,11 +18,20 @@ const Events = () => {
         }
 
         getAllEvents()
-        console.log("eveevts", events)
+        console.log("", events)
     }, [dispatch])
+
+    const { } = events
     return (
         <div>
-            <h1>Events</h1>
+            {events.map((event) => (
+                <>
+                    <h1>{event.name}</h1>
+                    <h1>{event.date}</h1>
+                    <h1>{event.distance}</h1>
+                    <h1>{event.creator}</h1>
+                </>
+            ))}
         </div>
     )
 }

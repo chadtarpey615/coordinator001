@@ -18,7 +18,7 @@ const Calendars = () => {
 
 
 
-    const { eventDate, eventName, eventDistance } = eventData
+    const { name, distance } = eventData
 
     const onChange = e => setEventData({ ...eventData, [e.target.name]: e.target.value })
 
