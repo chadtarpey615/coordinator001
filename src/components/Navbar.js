@@ -7,9 +7,10 @@ const Navbar = () => {
     const { user, isLoading, dispatch } = useContext(UserContext)
 
 
-    // useEffect(() => {
-    //     console.log(user)
-    // })
+    useEffect(() => {
+
+        console.log(user)
+    })
 
     const logout = () => {
         dispatch({
