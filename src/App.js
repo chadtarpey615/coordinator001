@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp"
 import Login from "./pages/Login"
 import Calendars from "./pages/Calendars"
 import "./App.css"
+import Events from "./pages/Events"
 function App() {
   return (
     <UserProvider>
@@ -17,6 +18,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/calendar" element={<Calendars />} />
+            <Route path="/events" element={<Events />} />
           </Routes>
         </Router>
       </EventProvider>

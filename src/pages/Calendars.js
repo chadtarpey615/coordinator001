@@ -13,13 +13,10 @@ const Calendars = () => {
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
         name: "",
-        date: "",
         distance: null
     })
 
-    useEffect(() => {
-        console.log(user.user._id)
-    })
+
 
     const { eventDate, eventName, eventDistance } = eventData
 
@@ -27,17 +24,25 @@ const Calendars = () => {
 
     const enterEventHandler = async (e) => {
         e.preventDefault()
+        if (!user)
+        {
+            alert("please log in first to continue")
+        } else
+        {
 
-        const eventInfo = await createEvent({
-            user: user.user._id,
-            ...eventData,
+            const eventInfo = await createEvent({
+                user: user.user._id,
+                ...eventData,
+                date: selectDay,
+                creator: user.user.email
 
-        })
+            })
 
-        dispatch({
-            type: "CREATE_EVENT",
-            payload: eventInfo
-        })
+            dispatch({
+                type: "CREATE_EVENT",
+                payload: eventInfo
+            })
+        }
 
 
     }
@@ -62,7 +67,7 @@ const Calendars = () => {
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
-                        <input type="text" placeholder={`date: ${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} />
+                        <input type="text" placeholder={`${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} />
 
                     </div>
                     <div >

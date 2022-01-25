@@ -7,6 +7,13 @@ const eventReducer = (state, action) => {
                 events: action.payload,
                 isLoading: false
             }
+
+        case "GET_EVENTS":
+            return {
+                ...state,
+                events: action.payload,
+                isLoading: false
+            }
         default:
             return state
     }

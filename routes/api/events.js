@@ -4,7 +4,7 @@ const Event = require("../../models/Events")
 
 
 router.post("/", async (req, res) => {
-    const { user, name, distance, date } = req.body
+    const { user, name, distance, date, creator } = req.body
 
     try
     {
@@ -14,7 +14,8 @@ router.post("/", async (req, res) => {
             user,
             name,
             date,
-            distance
+            distance,
+            creator
         })
 
         event.save()
@@ -22,6 +23,12 @@ router.post("/", async (req, res) => {
     {
         console.log(error)
     }
+})
+
+router.get("/all-events", async (req, res) => {
+    const events = await Event.find({})
+    res.json(events)
+
 })
 
 module.exports = router
