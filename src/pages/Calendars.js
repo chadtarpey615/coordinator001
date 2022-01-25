@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import "../styles/calendar.css"
+import EventContext from "../context/events/EventContext";
+import { createEvent } from "../context/events/EventActions";
+import UserContext from "../context/users/UserContext";
 
 
 const Calendars = () => {
-
+    const { events, isLoading, dispatch } = useContext(EventContext)
+    const { user } = useContext(UserContext)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
-        eventName: "",
-        eventDate: "",
-        eventDistance: null
+        name: "",
+        date: "",
+        distance: null
+    })
+
+    useEffect(() => {
+        console.log(user.user._id)
     })
 
     const { eventDate, eventName, eventDistance } = eventData
@@ -18,7 +26,20 @@ const Calendars = () => {
     const onChange = e => setEventData({ ...eventData, [e.target.name]: e.target.value })
 
     const enterEventHandler = async (e) => {
-        console.log("hit")
+        e.preventDefault()
+
+        const eventInfo = await createEvent({
+            user: user.user._id,
+            ...eventData,
+
+        })
+
+        dispatch({
+            type: "CREATE_EVENT",
+            payload: eventInfo
+        })
+
+
     }
     return (
         <div className="row">
@@ -36,17 +57,17 @@ const Calendars = () => {
 
                     <div >
                         <label htmlFor="name" > </label>
-                        <input type="text" placeholder="Add Event Name" name="eventName" onChange={e => onChange(e)} />
+                        <input type="text" placeholder="Add Event Name" name="name" onChange={e => onChange(e)} />
 
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
-                        <input type="text" placeholder={`date:`} name="eventDate" onMouseEnter={e => onChange(e)} />
+                        <input type="text" placeholder={`date: ${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} />
 
                     </div>
                     <div >
                         <label htmlFor="distance" > </label>
-                        <input type="text" placeholder="Add Event Total Distance" name="eventDistance" onChange={e => onChange(e)} />
+                        <input type="text" placeholder="Add Event Total Distance" name="distance" onChange={e => onChange(e)} />
 
                     </div>
                     <div >
