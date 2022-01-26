@@ -35,8 +35,12 @@ const Events = () => {
         window.location.reload()
     }
     return (
-        <div className="card-container">
-            {/* {events.map((event) => (
+        <div className="row ">
+            <div className="col-md-12 d-flex justify-content-center mt-5">
+                <h1>All Events</h1>
+            </div>
+            <div className="card-container mt-5">
+                {/* {events.map((event) => (
                 <div className="card">
                     <h1 className="card-title">{event.name}</h1>
                     <h1>{event.date}</h1>
@@ -45,9 +49,10 @@ const Events = () => {
                     <button onClick={e => deleteEvent(e, event._id)}>Delete Event</button>
                 </div>
             ))} */}
-            {
-                events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
-            }
+                {
+                    events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
+                }
+            </div>
         </div>
     )
 }

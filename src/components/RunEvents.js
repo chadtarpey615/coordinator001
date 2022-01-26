@@ -12,7 +12,8 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h4>Distance: <span>{distance}</span></h4>
                 <h4>Created by: <span>{creator}</span></h4>
                 <div className="card-btn">
-                    <button onClick={(e) => deleteEvent(e, _id)}></button>
+                    <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
+                    <button>Update Event</button>
                 </div>
             </Card>
         </>
