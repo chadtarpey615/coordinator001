@@ -20,3 +20,15 @@ export const createEvent = async (event) => {
 export const updateEvent = async () => {
 
 }
+
+export const removeEvent = async (id) => {
+    console.log(id)
+    try
+    {
+
+        const response = await axios.get(`/api/events/${id}`)
+    } catch (error)
+    {
+        console.log(error)
+    }
+}

@@ -33,7 +33,10 @@ const Navbar = () => {
                                 <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Calendar</a>
+                                <Link className="nav-link text-white" to="/calendar">Calendar</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link text-white" to="/events">All Events</Link>
                             </li>
                             {/* <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -31,4 +31,28 @@ router.get("/all-events", async (req, res) => {
 
 })
 
+router.get("/:id", async (req, res) => {
+
+    const eventId = req.params.id
+
+    let event
+    try
+    {
+        event = await Event.findById(eventId).populate("user")
+        event.delete()
+
+    } catch (error)
+    {
+        console.log(error)
+    }
+
+    if (!event)
+    {
+        console.log("no event found with that id")
+    }
+
+
+    // mongoose session 
+})
+
 module.exports = router
