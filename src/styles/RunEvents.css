@@ -1,0 +1,56 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+    /* margin: 5px auto;
+  background-color: aquamarine; */
+    /* flex: 3; */
+}
+
+.all-events {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-btn {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 45%;
+}
+
+.card-btn button {
+    margin: 5px auto;
+    border: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    background: none;
+    border: 1px #000 solid;
+    border-radius: 50px;
+    padding: 7px 16px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    width: 12rem;
+}
+
+.card-btn button:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.horizontal-line {
+    position: absolute;
+    max-width: 30%;
+    width: 15%;
+    height: 2px;
+    background-color: #000;
+    margin-top: 12px;
+}
+
+.event-title {
+    color: #fff;
+    margin: 4rem auto;
+    font-size: 2.5rem;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import EventContext from '../context/events/EventContext'
 import { getEvents, removeEvent } from '../context/events/EventActions'
+import RunEvents from '../components/RunEvents'
 
 
 const Events = () => {
@@ -11,7 +12,7 @@ const Events = () => {
 
         getAllEvents()
         console.log("", events)
-    }, [dispatch])
+    }, [])
 
     const getAllEvents = async () => {
         const data = await getEvents()
@@ -30,10 +31,12 @@ const Events = () => {
         })
 
         getAllEvents()
+        //temp fix but need to work reloading events with using the dom
+        window.location.reload()
     }
     return (
-        <div>
-            {events.map((event) => (
+        <div className="card-container">
+            {/* {events.map((event) => (
                 <div className="card">
                     <h1 className="card-title">{event.name}</h1>
                     <h1>{event.date}</h1>
@@ -41,7 +44,10 @@ const Events = () => {
                     <h1>{event.creator}</h1>
                     <button onClick={e => deleteEvent(e, event._id)}>Delete Event</button>
                 </div>
-            ))}
+            ))} */}
+            {
+                events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
+            }
         </div>
     )
 }

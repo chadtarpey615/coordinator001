@@ -36,6 +36,12 @@
     height: 400px;
 }
 
+.calendar-container {
+    display: grid;
+    background: linear-gradient(to right, #072f5f, #1261a0);
+    grid-template-columns: repeat(2, 1fr);
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
