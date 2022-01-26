@@ -6,7 +6,7 @@ import axios from "axios";
 export const getEvents = async (events) => {
 
     const response = await axios.get("/api/events/all-events")
-    console.log("resrersr", response, events)
+    // console.log("resrersr", response, events)
     return { events: response.data }
 }
 export const createEvent = async (event) => {
@@ -17,12 +17,12 @@ export const createEvent = async (event) => {
 }
 
 
-export const updateEvent = async () => {
-
+export const updateEvent = async (data) => {
+    console.log("actions", data)
 }
 
 export const removeEvent = async (id) => {
-    console.log(id)
+    // console.log(id)
     try
     {
 

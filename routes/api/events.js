@@ -55,4 +55,32 @@ router.get("/:id", async (req, res) => {
     // mongoose session 
 })
 
+router.put("/all-events/:id", async (req, res) => {
+    const eventId = req.params.id
+    const { name, distance, date } = req.body
+
+    let event
+    try
+    {
+        event = await Event.findById(eventId)
+
+        // update the event with new info from the req.body
+    } catch (error)
+    {
+        console.log(error)
+    }
+
+    event.name = name
+    event.date = date
+    event.distance = distance
+
+    try
+    {
+        await event.save()
+    } catch (error)
+    {
+        console.log(error)
+    }
+})
+
 module.exports = router

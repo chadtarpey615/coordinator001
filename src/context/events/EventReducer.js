@@ -21,6 +21,13 @@ const eventReducer = (state, action) => {
                 ...state,
                 events: state.events.filter(x => x.events !== action.payload)
             }
+
+        case "UPDATE_EVENT":
+            return {
+                ...state,
+                events: action.payload.events,
+                isLoading: false
+            }
         default:
             return state
     }

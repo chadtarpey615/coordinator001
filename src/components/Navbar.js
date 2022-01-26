@@ -10,7 +10,7 @@ const Navbar = () => {
     useEffect(() => {
 
         console.log("navbar", user)
-    })
+    }, [])
 
     const logout = () => {
         dispatch({
@@ -54,7 +54,7 @@ const Navbar = () => {
                         {user ? (
                             <ul className="navbar-nav ">
                                 <li className="nav-item">
-                                    <li className="nav-link active text-white" aria-current="page">Welcome {user.user.username} </li>
+                                    <li className="nav-link active text-white" aria-current="page">Welcome {user.username} </li>
                                 </li>
                                 <li className="nav-item">
                                     <li onClick={logout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</li>
