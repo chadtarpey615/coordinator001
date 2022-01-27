@@ -16,9 +16,9 @@
 }
 
 .run-form input {
-    margin: 22px auto;
+    margin: auto;
     width: 30vw;
-    height: 5vh;
+    height: 4vh;
     border-radius: 10px;
 }
 .run-form button {
@@ -26,4 +26,8 @@
     width: 20vw;
     height: 5vh;
     border-radius: 10px;
+}
+
+.event-input {
+    margin-top: 6rem;
 }

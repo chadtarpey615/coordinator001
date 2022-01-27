@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
 import { register, login } from "../context/users/UserActions"
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
     const { user, isLoading, dispatch } = useContext(UserContext)
@@ -41,6 +42,8 @@ const Login = () => {
 
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
+                    {/* <TextField id="filled-basic" label="Update Date" variant="filled" onChange={e => onChange(e)} /> */}
+
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>

@@ -5,7 +5,7 @@ import "../styles/calendar.css"
 import EventContext from "../context/events/EventContext";
 import { createEvent } from "../context/events/EventActions";
 import UserContext from "../context/users/UserContext";
-
+import TextField from '@mui/material/TextField';
 
 const Calendars = () => {
     const { events, isLoading, dispatch } = useContext(EventContext)
@@ -51,28 +51,33 @@ const Calendars = () => {
 
 
             <div className="col-md-6 my-5">
-                <h1>Run Fit</h1>
+                <h1 className="mx-5">Run Fit</h1>
                 <DayPicker onDayClick={(e) => setSelectDay(e)} />
             </div>
 
             <div className="col-md-6 mt-5">
 
                 <form className="run-form" onSubmit={enterEventHandler}>
-                    <h1>Add run event form </h1>
+                    <h1 className="mx-4">Add run event form </h1>
 
-                    <div >
+                    <div className="event-input">
                         <label htmlFor="name" > </label>
-                        <input type="text" placeholder="Add Event Name" name="name" onChange={e => onChange(e)} />
+                        <TextField id="filled-basic" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
+
+                        {/* <input type="text" placeholder="Add Event Name" name="name" onChange={e => onChange(e)} /> */}
 
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
-                        <input type="text" placeholder={`${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} />
+                        <TextField id="filled-basic" label={`${selectDay}`} name="date" variant="filled" onMouseEnter={e => setSelectDay(selectDay)} />
+                        {/* <input type="text" placeholder={`${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} /> */}
 
                     </div>
                     <div >
                         <label htmlFor="distance" > </label>
-                        <input type="text" placeholder="Add Event Total Distance" name="distance" onChange={e => onChange(e)} />
+                        <TextField id="filled-basic" label="Add Event Total Distance " name="distance" variant="filled" onChange={e => onChange(e)} />
+
+                        {/* <input type="text" placeholder="Add Event Total Distance" name="distance" onChange={e => onChange(e)} /> */}
 
                     </div>
                     <div >
