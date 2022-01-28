@@ -1,4 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { Link } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import UserContext from "../context/users/UserContext"
 import { register } from "../context/users/UserActions"
 
@@ -37,26 +42,40 @@ const SignUp = () => {
         <div>
             <h1 className="d-flex justify-content-center mt-5">Sign up </h1>
             <form onSubmit={e => onSubmit(e)}>
-                <div className="mb-3">
-                    <label className="form-label">User Name</label>
-                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value={username} onChange={e => onChange(e)} />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={password2} onChange={e => onChange(e)} />
-                </div>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Stack>
+                        <div className="mb-3">
+                            <label className="form-label">User Name</label>
+                            <TextField fullWidth id="filled-basic" label="User Name" variant="filled" name="username" onChange={e => onChange(e)} />
+                            {/* <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value={username} onChange={e => onChange(e)} /> */}
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Email address</label>
+                            <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
+                            {/* <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} /> */}
+                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Password</label>
+                            <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
+                            {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} /> */}
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Confirm Password</label>
+                            <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password2" onChange={e => onChange(e)} />
+                            {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={password2} onChange={e => onChange(e)} /> */}
+                        </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                        <Link className="my-3" to="/login" >Have an account? Log In here </Link>
 
+                        <Button variant="contained" size="large" type="submit" className="btn btn-primary">Submit</Button>
+                    </Stack>
+                </Grid>
             </form>
         </div>
     )

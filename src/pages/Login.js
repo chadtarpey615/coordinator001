@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
 import { register, login } from "../context/users/UserActions"
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
-
+import Button from '@mui/material/Button';
 
 
 const Login = () => {
@@ -61,8 +62,8 @@ const Login = () => {
 
                         </div>
 
-
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <Link className="my-3" to="/signup" >Don't have  an account? Sign Up here </Link>
+                        <Button variant="contained" size="large" type="submit" className="btn btn-primary">Submit</Button>
 
                     </Stack>
                 </Grid>
