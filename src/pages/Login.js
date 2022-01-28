@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
 import { register, login } from "../context/users/UserActions"
 import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
+
+
 
 const Login = () => {
     const { user, isLoading, dispatch } = useContext(UserContext)
@@ -39,22 +43,29 @@ const Login = () => {
         <div>
             <h1 className="d-flex justify-content-center mt-5">Log In </h1>
             <form onSubmit={e => onSubmit(e)}>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                >
 
-                <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    {/* <TextField id="filled-basic" label="Update Date" variant="filled" onChange={e => onChange(e)} /> */}
+                    <Stack>
+                        <div className="mb-3">
+                            <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
 
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} />
-                </div>
+                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div className="mb-3">
+                            <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
+
+                        </div>
 
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Submit</button>
 
+                    </Stack>
+                </Grid>
             </form>
         </div>
     )
