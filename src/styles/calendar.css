@@ -28,6 +28,19 @@
     border-radius: 10px;
 }
 
+.home-btns button {
+    margin-top: 12px;
+    width: 20vw;
+    height: 5vh;
+    border-radius: 10px;
+    background-color: #276cc0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .event-input {
     margin-top: 6rem;
 }

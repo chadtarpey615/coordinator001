@@ -116,4 +116,20 @@ router.put("/all-events/:id", async (req, res) => {
     }
 })
 
+
+router.post("/:_id", async (req, res) => {
+    const eventId = req.body.id
+
+    let event
+    let comment
+
+    try
+    {
+
+    } catch (error)
+    {
+
+    }
+})
+
 module.exports = router

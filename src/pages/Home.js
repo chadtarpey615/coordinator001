@@ -19,7 +19,7 @@ const Home = () => {
                     <div className="row">
                         <div className="col-md-10">
                             <div className="d-flex flex-row-reverse py-5">
-                                <Animated animationIn="bounceInLeft">
+                                <Animated animationIn="fadeInLeft">
                                     <p className="mx-5">
                                         At Run Fit we want to make it easy to locate where runners meetup to run as a group.
                                         Great place to make new friends with the common interest of running and fitness.
@@ -34,13 +34,14 @@ const Home = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-md-10">
-                            <div className="d-flex justify-content-end">
+                        <div className="col-md-12">
+                            <div className="d-flex justify-content-end home-btns">
 
-                                <div className="home-btns">
-                                    <Button className="mx-3" variant="contained" disableElevation size="large" color="success"><Link to="/signup"> Sign Up</Link></Button>
-                                    <Button className="mx-3" variant="contained" disableElevation ><Link to="/login"> Log In</Link></Button>
-                                </div>
+                                <Animated animationIn="fadeInDown">
+
+                                    <button className="mx-3" ><Link to="/signup"> Sign Up</Link></button>
+                                    <button className="mx-3" ><Link to="/login"> Log In</Link></button>
+                                </Animated>
 
 
                             </div>
@@ -52,7 +53,7 @@ const Home = () => {
 
                 <div className="col-md-6">
                     <div className="d-flex justify-content-center py-5 my-5">
-                        <Animated animationIn="bounceInRight">
+                        <Animated animationIn="fadeInRight">
 
                             <img src={image} alt="picture of a person running on the street" />
                         </Animated>

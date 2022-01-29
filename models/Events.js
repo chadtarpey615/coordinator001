@@ -1,5 +1,19 @@
 const mongoose = require("mongoose")
 
+
+const commentSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    comment: {
+        type: String,
+        reqiured: true
+    }
+})
+
+
+
 const eventSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +36,9 @@ const eventSchema = mongoose.Schema({
 
     creator: {
         type: String,
-    }
+    },
+
+    comments: [commentSchema]
 
 
 })

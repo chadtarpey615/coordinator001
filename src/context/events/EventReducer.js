@@ -29,6 +29,14 @@ const eventReducer = (state, action) => {
                 events: action.payload.events,
                 isLoading: false
             }
+
+        case "Add_COMMENT":
+            return {
+                ...state,
+                comments: action.payload
+            }
+
+
         default:
             return state
     }

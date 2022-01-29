@@ -60,3 +60,11 @@ export const removeEvent = async (id) => {
         console.log(error)
     }
 }
+
+
+export const addComment = async (data) => {
+
+    const comment = {
+
+    }
+}
