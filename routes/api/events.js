@@ -3,7 +3,6 @@ const router = express.Router();
 const Mongoose = require("mongoose")
 const Event = require("../../models/Events");
 const User = require("../../models/User");
-const { find } = require("../../models/User");
 
 
 router.post("/", async (req, res) => {
@@ -57,7 +56,7 @@ router.get("/:id", async (req, res) => {
     try
     {
         event = await Event.findById(eventId).populate("user")
-        // console.log("delete", event)
+        console.log("delete", event)
         event.delete()
 
     } catch (error)
@@ -72,6 +71,7 @@ router.get("/:id", async (req, res) => {
 
     try
     {
+
         const sess = await Mongoose.startSession()
         sess.startTransaction()
         await event.remove({ session: sess })
@@ -95,6 +95,7 @@ router.put("/all-events/:id", async (req, res) => {
     try
     {
         event = await Event.findById(eventId)
+        console.log("Update", event)
 
         // update the event with new info from the req.body
     } catch (error)

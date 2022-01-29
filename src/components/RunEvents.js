@@ -39,6 +39,7 @@ const RunEvents = ({ event, deleteEvent }) => {
         {
 
             const eventUpdateInfo = await updateEvent({
+                id: id,
                 user: user._id,
                 ...updateEventData,
                 creator: user.email
@@ -51,6 +52,9 @@ const RunEvents = ({ event, deleteEvent }) => {
                     type: "UPDATE_EVENT",
                     payload: eventUpdateInfo
                 })
+
+
+                window.location.reload()
             }
 
         }

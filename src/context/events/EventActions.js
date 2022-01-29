@@ -18,14 +18,36 @@ export const createEvent = async (event) => {
 
 
 export const updateEvent = async (data) => {
-    console.log("actions", data)
+    // console.log("actions", data)
 
-    const { user, name, date, distance, creator } = data
+    const { user, name, date, distance, creator, id } = data
+    console.log(user)
 
-    // const updatedEvent = {
-    //     id: 
-    // }
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const updatedEvent = {
+        id: id,
+        name: name,
+        date: date,
+        distance: distance,
+        creator: user
+
+    }
+
+
+    const response = await axios.put(`/api/events/all-events/${id}`, updatedEvent, config)
+
 }
+
+
+
+
+
+
 
 export const removeEvent = async (id) => {
     // console.log(id)
