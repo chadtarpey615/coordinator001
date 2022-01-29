@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+body {
+    background: linear-gradient(to right, #072f5f, #1261a0);
+}
+
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -38,8 +42,11 @@
 
 .calendar-container {
     display: grid;
-    background: linear-gradient(to right, #072f5f, #1261a0);
+    background: linear-gradient(to right, #0d386d, #186baf);
     grid-template-columns: repeat(2, 1fr);
+}
+.DayPicker-Month {
+    color: #fff;
 }
 
 p {

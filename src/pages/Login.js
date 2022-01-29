@@ -53,11 +53,13 @@ const Login = () => {
 
                     <Stack>
                         <div className="mb-3">
+                            <label className="form-label text-light">Email</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
 
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
+                            <label className="form-label text-light">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
 
                         </div>

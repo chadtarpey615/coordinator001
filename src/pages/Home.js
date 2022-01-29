@@ -17,8 +17,8 @@ const Home = () => {
 
                     </div>
                     <div className="row">
-                        <div className="col-md-6">
-                            <div className="d-flex justify-content-center py-5">
+                        <div className="col-md-10">
+                            <div className="d-flex flex-row-reverse py-5">
                                 <Animated animationIn="bounceInLeft">
                                     <p className="mx-5">
                                         At Run Fit we want to make it easy to locate where runners meetup to run as a group.
@@ -34,8 +34,8 @@ const Home = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-md-6">
-                            <div className="d-flex justify-content-center">
+                        <div className="col-md-10">
+                            <div className="d-flex justify-content-end">
 
                                 <div className="home-btns">
                                     <Button className="mx-3" variant="contained" disableElevation size="large" color="success"><Link to="/signup"> Sign Up</Link></Button>

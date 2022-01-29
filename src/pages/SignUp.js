@@ -50,23 +50,23 @@ const SignUp = () => {
                 >
                     <Stack>
                         <div className="mb-3">
-                            <label className="form-label">User Name</label>
+                            <label className="form-label text-light">User Name</label>
                             <TextField fullWidth id="filled-basic" label="User Name" variant="filled" name="username" onChange={e => onChange(e)} />
                             {/* <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value={username} onChange={e => onChange(e)} /> */}
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Email address</label>
+                            <label className="form-label text-light">Email address</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
                             {/* <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} /> */}
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Password</label>
+                            <label className="form-label text-light">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
                             {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} /> */}
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Confirm Password</label>
+                            <label className="form-label text-light">Confirm Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password2" onChange={e => onChange(e)} />
                             {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={password2} onChange={e => onChange(e)} /> */}
                         </div>
