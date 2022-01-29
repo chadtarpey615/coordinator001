@@ -10,6 +10,8 @@ import "../styles/RunEvents.css"
 import EventContext from '../context/events/EventContext';
 import { updateEvent } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+
 
 const RunEvents = ({ event, deleteEvent }) => {
     const { events, isLoading, dispatch } = useContext(EventContext)
@@ -77,6 +79,7 @@ const RunEvents = ({ event, deleteEvent }) => {
     return (
         <>
             <Card>
+                <DirectionsRunIcon />
                 <h1>Event Title: <span>{name}</span></h1>
                 <h4>Date: <span>{date}</span></h4>
                 <h4>Distance: <span>{distance}</span></h4>

@@ -42,6 +42,10 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+Link {
+    color: #fff;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
