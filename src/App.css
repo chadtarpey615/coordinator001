@@ -42,8 +42,13 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-Link {
-    color: #fff;
+p {
+    font-size: 26px;
+}
+
+.home-btns {
+    width: 100%;
+    /* color: #fff; */
 }
 
 @keyframes App-logo-spin {
