@@ -24,6 +24,7 @@ const Calendars = () => {
 
     const enterEventHandler = async (e) => {
         e.preventDefault()
+        console.log(user)
         if (!user)
         {
             alert("please log in first to continue")
@@ -31,10 +32,10 @@ const Calendars = () => {
         {
 
             const eventInfo = await createEvent({
-                user: user.user._id,
+                user: user._id,
                 ...eventData,
                 date: selectDay,
-                creator: user.user.email
+                creator: user.email
 
             })
 

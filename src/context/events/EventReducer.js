@@ -23,6 +23,7 @@ const eventReducer = (state, action) => {
             }
 
         case "UPDATE_EVENT":
+            console.log("update reducer hit")
             return {
                 ...state,
                 events: action.payload.events,

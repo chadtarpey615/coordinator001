@@ -1,28 +1,46 @@
 const express = require("express")
 const router = express.Router();
-const Event = require("../../models/Events")
+const Mongoose = require("mongoose")
+const Event = require("../../models/Events");
+const User = require("../../models/User");
+const { find } = require("../../models/User");
 
 
 router.post("/", async (req, res) => {
+
     const { user, name, distance, date, creator } = req.body
+    console.log(user)
+
+    let event
+
+    event = new Event({
+        user,
+        name,
+        date,
+        distance,
+        creator
+    })
+
+    let findUser
 
     try
     {
-        let event
-
-        event = new Event({
-            user,
-            name,
-            date,
-            distance,
-            creator
-        })
-
-        event.save()
+        findUser = await User.findById(user)
     } catch (error)
     {
         console.log(error)
     }
+
+
+
+    const sess = await Mongoose.startSession()
+    sess.startTransaction()
+    await event.save({ session: sess })
+    findUser.events.push(event)
+    await findUser.save({ session: sess })
+    await sess.commitTransaction()
+
+
 })
 
 router.get("/all-events", async (req, res) => {
@@ -39,6 +57,7 @@ router.get("/:id", async (req, res) => {
     try
     {
         event = await Event.findById(eventId).populate("user")
+        // console.log("delete", event)
         event.delete()
 
     } catch (error)
@@ -51,6 +70,19 @@ router.get("/:id", async (req, res) => {
         console.log("no event found with that id")
     }
 
+    try
+    {
+        const sess = await Mongoose.startSession()
+        sess.startTransaction()
+        await event.remove({ session: sess })
+        event.user.events.pull(event)
+        await event.user.save({ session: sess })
+        await sess.commitTransaction()
+    } catch (error)
+    {
+
+    }
+    res.status(200).json({ message: "Deleted place" })
 
     // mongoose session 
 })

@@ -26,10 +26,12 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const handleOpen = (id) => {
         setOpen(true);
+        console.log(user)
     }
     const handleClose = () => setOpen(false);
 
     const updatedEvent = async (id) => {
+        console.log(id)
         if (!user)
         {
             alert("please log in first to continue")
@@ -37,15 +39,20 @@ const RunEvents = ({ event, deleteEvent }) => {
         {
 
             const eventUpdateInfo = await updateEvent({
-                user: user.user._id,
+                user: user._id,
                 ...updateEventData,
-                creator: user.user.email
+                creator: user.email
             })
 
-            dispatch({
-                type: "UPDATE_EVENT",
-                payload: eventUpdateInfo
-            })
+            if (eventUpdateInfo)
+            {
+
+                dispatch({
+                    type: "UPDATE_EVENT",
+                    payload: eventUpdateInfo
+                })
+            }
+
         }
     }
 
@@ -82,11 +89,12 @@ const RunEvents = ({ event, deleteEvent }) => {
                     >
                         <Box sx={style}>
                             <Stack spacing={2}>
+                                <TextField id="filled-basic" label="Update Name" variant="filled" name="name" onChange={e => onChange(e)} />
+                                <TextField id="filled-basic" label="Update Date" variant="filled" name="date" onChange={e => onChange(e)} />
+                                <TextField id="filled-basic" label="Update Distance" variant="filled" name="distance" onChange={e => onChange(e)} />
+                                <Button onClick={() => updatedEvent(_id)} variant="outlined">Update</Button>
 
-                                <TextField id="filled-basic" label="Update Date" variant="filled" onChange={e => onChange(e)} />
-                                <TextField id="filled-basic" label="Update Name" variant="filled" onChange={e => onChange(e)} />
-                                <TextField id="filled-basic" label="Update Distance" variant="filled" onChange={e => onChange(e)} />
-                                <Button onClick={updatedEvent(_id)} variant="outlined">Update</Button>
+
                             </Stack>
                         </Box>
                     </Modal>

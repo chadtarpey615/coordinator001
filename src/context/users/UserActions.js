@@ -23,7 +23,7 @@ export const register = async ({ username, email, password }) => {
 }
 
 
-export const login = async ({ email, password, }) => {
+export const login = async ({ email, password }) => {
     const config = {
         headers: {
             "Content-Type": "application/json"

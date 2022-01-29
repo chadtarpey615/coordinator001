@@ -19,6 +19,12 @@ export const createEvent = async (event) => {
 
 export const updateEvent = async (data) => {
     console.log("actions", data)
+
+    const { user, name, date, distance, creator } = data
+
+    // const updatedEvent = {
+    //     id: 
+    // }
 }
 
 export const removeEvent = async (id) => {
