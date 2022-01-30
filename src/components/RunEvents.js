@@ -14,7 +14,7 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, isLoading, dispatch } = useContext(EventContext)
+    const { events, isLoading, comments, dispatch } = useContext(EventContext)
     const { user, } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
@@ -31,7 +31,7 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const handleOpen = (id) => {
         setOpen(true);
-        console.log(user)
+        console.log(comments, events)
     }
 
     const handleComment = e => setOpenComment(true)

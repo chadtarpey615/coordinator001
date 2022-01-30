@@ -118,18 +118,30 @@ router.put("/all-events/:id", async (req, res) => {
 
 
 router.post("/:_id", async (req, res) => {
-    const eventId = req.body.id
+    const eventId = req.params._id
+    console.log("hit", eventId)
 
     let event
     let comment
 
     try
     {
-
+        event = await Event.findById(eventId).populate("comments")
     } catch (error)
     {
-
+        console.log(error)
     }
+
+
+    comment = req.body
+    console.log(comment)
+
+    const sess = await Mongoose.startSession();
+    sess.startTransaction()
+    await event.save({ session: sess })
+    event.comments.push(comment)
+    await event.save({ session: sess })
+    await sess.commitTransaction()
 })
 
 module.exports = router

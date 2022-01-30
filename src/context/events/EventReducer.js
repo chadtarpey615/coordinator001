@@ -34,7 +34,7 @@ const eventReducer = (state, action) => {
             console.log("comment reducer")
             return {
                 ...state,
-                comments: action.payload
+                comments: action.payload.comments
             }
 
 

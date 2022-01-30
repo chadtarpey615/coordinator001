@@ -5,6 +5,7 @@ const EventContext = createContext()
 export const EventProvider = ({ children }) => {
     const initialState = {
         events: [],
+        comments: [],
         isLoading: false
     }
 

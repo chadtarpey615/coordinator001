@@ -72,7 +72,8 @@ export const addComment = async (data) => {
 
     try
     {
-        const response = await axios.post(`/api/events/${data._id}`)
+        const response = await axios.post(`/api/events/${data._id}`, comment)
+        return { comments: response.data }
     } catch (error)
     {
         console.log(error)
