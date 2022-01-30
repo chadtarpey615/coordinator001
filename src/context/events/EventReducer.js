@@ -30,7 +30,8 @@ const eventReducer = (state, action) => {
                 isLoading: false
             }
 
-        case "Add_COMMENT":
+        case "ADD_COMMENT":
+            console.log("comment reducer")
             return {
                 ...state,
                 comments: action.payload

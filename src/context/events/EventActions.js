@@ -63,8 +63,18 @@ export const removeEvent = async (id) => {
 
 
 export const addComment = async (data) => {
-
+    console.log("comment action", data)
     const comment = {
+        name: data.name,
+        comment: data.comment
 
+    }
+
+    try
+    {
+        const response = await axios.post(`/api/events/${data._id}`)
+    } catch (error)
+    {
+        console.log(error)
     }
 }

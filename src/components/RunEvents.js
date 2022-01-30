@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import EventContext from '../context/events/EventContext';
-import { updateEvent } from "../context/events/EventActions"
+import { updateEvent, addComment } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
@@ -19,6 +19,8 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
+    const [userComment, setUserComment] = useState("")
+    const [commentEmail, setCommentEmail] = useState("")
     const [updateEventData, setUpdateEventData] = useState({
         name: "",
         date: "",
@@ -64,6 +66,20 @@ const RunEvents = ({ event, deleteEvent }) => {
             }
 
         }
+    }
+
+    const addUserComment = async (id) => {
+
+        const eventComment = await addComment({
+            _id: id,
+            name: commentEmail,
+            comment: userComment
+        })
+
+        dispatch({
+            type: "ADD_COMMENT",
+            payload: eventComment
+        })
     }
 
     const { name, date, distance, _id, creator } = event
@@ -122,13 +138,10 @@ const RunEvents = ({ event, deleteEvent }) => {
                                 <Box sx={style}>
                                     <Stack spacing={2}>
                                         <h3>Let's add a comment</h3>
-                                        <TextField id="filled-basic" variant="filled" name="username"
-                                            defaultValue={user.email}
-                                            InputProps={{
-                                                readOnly: true,
-                                            }} />
-                                        <TextField id="filled-basic" label="Add Comment" variant="filled" name="comment" />
 
+                                        <TextField id="filled-basic" label="Email" value={user.email} variant="filled" name="email" onMouseEnter={(e) => setCommentEmail(e.target.value)} />
+                                        <TextField id="filled-basic" label="Add Comment" variant="filled" name="comment" onChange={(e) => setUserComment(e.target.value)} />
+                                        <Button onClick={() => addUserComment(_id)} variant="outlined">Add Comment</Button>
 
                                     </Stack>
                                 </Box>
