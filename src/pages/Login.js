@@ -42,7 +42,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1 className="d-flex justify-content-center mt-5">Log In </h1>
+            <h1 className="d-flex justify-content-center mt-5 text-light">Log In </h1>
             <form onSubmit={e => onSubmit(e)}>
                 <Grid
                     container

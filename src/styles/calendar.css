@@ -44,3 +44,12 @@ a {
 .event-input {
     margin-top: 6rem;
 }
+
+.DayPickerInput-Overlay {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+
+    background: black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

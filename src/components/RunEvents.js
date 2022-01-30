@@ -18,6 +18,7 @@ const RunEvents = ({ event, deleteEvent }) => {
     const { user, } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
+    const [openComment, setOpenComment] = useState(false)
     const [updateEventData, setUpdateEventData] = useState({
         name: "",
         date: "",
@@ -30,7 +31,10 @@ const RunEvents = ({ event, deleteEvent }) => {
         setOpen(true);
         console.log(user)
     }
+
+    const handleComment = e => setOpenComment(true)
     const handleClose = () => setOpen(false);
+    const handleCommentClose = () => setOpenComment(false);
 
     const updatedEvent = async (id) => {
         console.log(id)
@@ -88,23 +92,53 @@ const RunEvents = ({ event, deleteEvent }) => {
                     <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
 
                     <button onClick={(e) => handleOpen(_id)}>Update Event</button>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={style}>
-                            <Stack spacing={2}>
-                                <TextField id="filled-basic" label="Update Name" variant="filled" name="name" onChange={e => onChange(e)} />
-                                <TextField id="filled-basic" label="Update Date" variant="filled" name="date" onChange={e => onChange(e)} />
-                                <TextField id="filled-basic" label="Update Distance" variant="filled" name="distance" onChange={e => onChange(e)} />
-                                <Button onClick={() => updatedEvent(_id)} variant="outlined">Update</Button>
+                    <button onClick={() => handleComment(_id)}>Add Comment</button>
+
+                    {open ? (
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                                <Stack spacing={2}>
+                                    <TextField id="filled-basic" label="Update Name" variant="filled" name="name" onChange={e => onChange(e)} />
+                                    <TextField id="filled-basic" label="Update Date" variant="filled" name="date" onChange={e => onChange(e)} />
+                                    <TextField id="filled-basic" label="Update Distance" variant="filled" name="distance" onChange={e => onChange(e)} />
+                                    <Button onClick={() => updatedEvent(_id)} variant="outlined">Update</Button>
 
 
-                            </Stack>
-                        </Box>
-                    </Modal>
+                                </Stack>
+                            </Box>
+                        </Modal>
+                    ) : (
+                            <Modal
+                                open={openComment}
+                                onClose={handleCommentClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Stack spacing={2}>
+                                        <h3>Let's add a comment</h3>
+                                        <TextField id="filled-basic" variant="filled" name="username"
+                                            defaultValue={user.email}
+                                            InputProps={{
+                                                readOnly: true,
+                                            }} />
+                                        <TextField id="filled-basic" label="Add Comment" variant="filled" name="comment" />
+
+
+                                    </Stack>
+                                </Box>
+
+
+                            </Modal>
+                        )}
+
+
+
                 </div>
             </Card>
         </>
