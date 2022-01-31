@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
-import { register, login } from "../context/users/UserActions"
+import { login } from "../context/users/UserActions"
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 
 
 const Login = () => {
-    const { user, isLoading, dispatch } = useContext(UserContext)
+    const { dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",

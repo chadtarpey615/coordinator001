@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { Animated } from "react-animated-css";
-import Button from '@mui/material/Button';
-import image from "../images/istockphoto.jpeg"
+import runnerImg from "../images/istockphoto.jpeg"
 const Home = () => {
     return (
         <>
@@ -55,7 +54,7 @@ const Home = () => {
                     <div className="d-flex justify-content-center py-5 my-5">
                         <Animated animationIn="fadeInRight">
 
-                            <img src={image} alt="picture of a person running on the street" />
+                            <img src={runnerImg} alt=" A person running on the street" />
                         </Animated>
                     </div>
                 </div>

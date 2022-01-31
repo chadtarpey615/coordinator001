@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
@@ -10,8 +10,10 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
 
+
+
 const Calendars = () => {
-    const { events, isLoading, dispatch } = useContext(EventContext)
+    const { dispatch } = useContext(EventContext)
     const { user } = useContext(UserContext)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
@@ -20,8 +22,6 @@ const Calendars = () => {
     })
 
 
-
-    const { name, distance } = eventData
 
     const onChange = e => setEventData({ ...eventData, [e.target.name]: e.target.value })
 

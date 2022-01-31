@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -8,7 +8,7 @@ import UserContext from "../context/users/UserContext"
 import { register } from "../context/users/UserActions"
 
 const SignUp = () => {
-    const { user, isLoading, dispatch } = useContext(UserContext)
+    const { dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         username: "",
         email: "",
@@ -16,9 +16,7 @@ const SignUp = () => {
         password2: ""
     })
 
-    // useEffect(() => {
-    //     console.log(UserContext)
-    // })
+
 
     const { username, email, password, password2 } = loginData
 
@@ -34,7 +32,12 @@ const SignUp = () => {
             alert("invalid info")
         } else
         {
-            register({ username, email, password })
+            const newUser = await register({ username, email, password })
+
+            dispatch({
+                type: "SIGNUP_USER",
+                payload: newUser
+            })
         }
     }
 

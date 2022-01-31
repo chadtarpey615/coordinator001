@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import EventContext from '../context/events/EventContext'
 import { getEvents, removeEvent } from '../context/events/EventActions'
 import RunEvents from '../components/RunEvents'
 
 
 const Events = () => {
-    const { events, isLoading, dispatch } = useContext(EventContext)
+    const { events, dispatch } = useContext(EventContext)
 
     useEffect(() => {
 
 
         getAllEvents()
         console.log("", events)
-    }, [])
+    }, [events, getAllEvents])
 
     const getAllEvents = async () => {
         const data = await getEvents()
@@ -40,15 +40,7 @@ const Events = () => {
                 <h1>All Events</h1>
             </div>
             <div className="card-container mt-5">
-                {/* {events.map((event) => (
-                <div className="card">
-                    <h1 className="card-title">{event.name}</h1>
-                    <h1>{event.date}</h1>
-                    <h1>{event.distance}</h1>
-                    <h1>{event.creator}</h1>
-                    <button onClick={e => deleteEvent(e, event._id)}>Delete Event</button>
-                </div>
-            ))} */}
+
                 {
                     events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
                 }
