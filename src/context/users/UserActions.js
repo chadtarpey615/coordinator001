@@ -13,7 +13,7 @@ export const register = async ({ username, email, password }) => {
     try
     {
         const response = await axios.post("/api/users", signupInfo, config)
-
+        return { users: response.data }
 
     } catch (error)
     {

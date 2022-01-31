@@ -11,7 +11,7 @@ const Navbar = () => {
     useEffect(() => {
 
         console.log("navbar", user)
-    }, [])
+    }, [user])
 
     const logout = () => {
         dispatch({
