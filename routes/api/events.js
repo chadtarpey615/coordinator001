@@ -44,9 +44,14 @@ router.post("/", async (req, res) => {
 
 router.get("/all-events", async (req, res) => {
     const events = await Event.find({})
+
     res.json(events)
 
 })
+
+// router.get("/comments", async (req, res) => {
+//     const comments = 
+// })
 
 router.get("/:id", async (req, res) => {
 
@@ -84,7 +89,6 @@ router.get("/:id", async (req, res) => {
     }
     res.status(200).json({ message: "Deleted place" })
 
-    // mongoose session 
 })
 
 router.put("/all-events/:id", async (req, res) => {

@@ -79,3 +79,10 @@ export const addComment = async (data) => {
         console.log(error)
     }
 }
+
+export const getComments = async (comments) => {
+
+    const response = await axios.get("/api/events/comments")
+    // console.log("resrersr", response, events)
+    return { comments: response.data }
+}

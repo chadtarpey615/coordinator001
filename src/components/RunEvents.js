@@ -11,10 +11,11 @@ import EventContext from '../context/events/EventContext';
 import { updateEvent, addComment } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import Divider from '@mui/material/Divider';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, isLoading, comments, dispatch } = useContext(EventContext)
+    const { events, isLoading, dispatch } = useContext(EventContext)
     const { user, } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
@@ -31,7 +32,8 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const handleOpen = (id) => {
         setOpen(true);
-        console.log(comments, events)
+
+        console.log(events)
     }
 
     const handleComment = e => setOpenComment(true)
@@ -80,6 +82,8 @@ const RunEvents = ({ event, deleteEvent }) => {
             type: "ADD_COMMENT",
             payload: eventComment
         })
+
+        window.location.reload()
     }
 
     const { name, date, distance, _id, creator } = event
@@ -104,6 +108,16 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h4>Date: <span>{date}</span></h4>
                 <h4>Distance: <span>{distance}</span></h4>
                 <h4>Created by: <span>{creator}</span></h4>
+
+                <h3>Comments</h3>
+                {event.comments.map((comment) => (
+                    <div className="card">
+                        <h4>{comment.name} :</h4><p>{comment.comment}</p>
+                        <Divider />
+                    </div>
+                ))}
+
+
                 <div className="card-btn">
                     <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
 
