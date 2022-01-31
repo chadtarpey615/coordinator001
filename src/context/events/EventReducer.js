@@ -16,7 +16,6 @@ const eventReducer = (state, action) => {
             }
 
         case "DELETE_EVENT":
-            // console.log(state.events)
             return {
                 ...state,
                 events: state.events.filter(x => x.events !== action.payload)

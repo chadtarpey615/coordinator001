@@ -6,7 +6,6 @@ import axios from "axios";
 export const getEvents = async (events) => {
 
     const response = await axios.get("/api/events/all-events")
-    // console.log("resrersr", response, events)
     return { events: response.data }
 }
 export const createEvent = async (event) => {
@@ -18,9 +17,8 @@ export const createEvent = async (event) => {
 
 
 export const updateEvent = async (data) => {
-    // console.log("actions", data)
 
-    const { user, name, date, distance, creator, id } = data
+    const { user, name, date, distance, id } = data
     console.log(user)
 
     const config = {
@@ -41,6 +39,8 @@ export const updateEvent = async (data) => {
 
     const response = await axios.put(`/api/events/all-events/${id}`, updatedEvent, config)
 
+    return { events: response.data }
+
 }
 
 
@@ -50,11 +50,11 @@ export const updateEvent = async (data) => {
 
 
 export const removeEvent = async (id) => {
-    // console.log(id)
     try
     {
 
         const response = await axios.get(`/api/events/${id}`)
+        return { events: response.data }
     } catch (error)
     {
         console.log(error)

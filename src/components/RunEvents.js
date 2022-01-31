@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import Card from '../components/Card'
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -15,8 +14,8 @@ import Divider from '@mui/material/Divider';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, isLoading, dispatch } = useContext(EventContext)
-    const { user, } = useContext(UserContext)
+    const { events, dispatch } = useContext(EventContext)
+    const { user } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
@@ -63,7 +62,6 @@ const RunEvents = ({ event, deleteEvent }) => {
                     payload: eventUpdateInfo
                 })
 
-
                 window.location.reload()
             }
 
@@ -72,18 +70,28 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const addUserComment = async (id) => {
 
-        const eventComment = await addComment({
-            _id: id,
-            name: commentEmail,
-            comment: userComment
-        })
+        if (!user)
+        {
+            alert("please log in first to continue")
 
-        dispatch({
-            type: "ADD_COMMENT",
-            payload: eventComment
-        })
+        } else
+        {
+            const eventComment = await addComment({
+                _id: id,
+                name: commentEmail,
+                comment: userComment
+            })
 
-        window.location.reload()
+            dispatch({
+                type: "ADD_COMMENT",
+                payload: eventComment
+            })
+            handleCommentClose()
+
+            window.location.reload()
+        }
+
+
     }
 
     const { name, date, distance, _id, creator } = event
@@ -163,8 +171,6 @@ const RunEvents = ({ event, deleteEvent }) => {
 
                             </Modal>
                         )}
-
-
 
                 </div>
             </Card>

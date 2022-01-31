@@ -10,7 +10,7 @@ const userReducer = (state, action) => {
             }
 
         case "LOGIN_USER":
-            console.log("hihiiy LOGIN_USER", action.payload.user)
+            console.log("hit LOGIN_USER", action.payload.user)
             return {
                 ...state,
                 user: action.payload.user,

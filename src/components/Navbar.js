@@ -5,7 +5,7 @@ import UserContext from '../context/users/UserContext';
 
 
 const Navbar = () => {
-    const { user, isLoading, dispatch } = useContext(UserContext)
+    const { user, dispatch } = useContext(UserContext)
 
 
     useEffect(() => {
@@ -19,7 +19,6 @@ const Navbar = () => {
         })
     }
 
-    // const { user } = user
     return (
         <>
             <nav nav className="navbar navbar-expand-lg navbar-light bg-dark" >
@@ -39,26 +38,16 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link text-white" to="/events">All Events</Link>
                             </li>
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-            </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li> */}
-
                         </ul>
+
+
                         {user ? (
                             <ul className="navbar-nav ">
                                 <li className="nav-item">
                                     <li className="nav-link active text-white" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
                                 </li>
                                 <li className="nav-item">
-                                    <li onClick={logout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</li>
+                                    <Link onClick={logout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</Link>
                                 </li>
                             </ul>
                         ) : (

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const register = async ({ username, email, password }) => {
-    console.log("copntessrtsf")
     const config = {
         headers: {
             "Content-Type": "application/json"
@@ -36,8 +35,6 @@ export const login = async ({ email, password }) => {
     return { user: response.data }
 }
 
-// export const logout = async () => {
 
-// }
 
 
