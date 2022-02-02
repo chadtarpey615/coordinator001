@@ -3,6 +3,7 @@ const router = express.Router();
 const Mongoose = require("mongoose")
 const Event = require("../../models/Events");
 const User = require("../../models/User");
+const Comments = require("../../models/Comments");
 
 
 router.post("/", async (req, res) => {
@@ -123,22 +124,30 @@ router.put("/all-events/:id", async (req, res) => {
 
 router.post("/:_id", async (req, res) => {
     const eventId = req.params._id
-    console.log("hit", eventId)
 
     let event
     let comment
+    let user
 
     try
     {
-        event = await Event.findById(eventId).populate("comments")
+        event = await Event.findById(eventId).populate("user")
+        user = await User.findById(event.user._id)
     } catch (error)
     {
         console.log(error)
     }
 
 
-    comment = req.body
-    console.log(comment)
+    comment = new Comments({
+        user: user._id,
+        event: eventId,
+        name: req.body.name,
+        comment: req.body.comment
+    })
+
+    comment.save()
+
 
     const sess = await Mongoose.startSession();
     sess.startTransaction()
@@ -146,6 +155,20 @@ router.post("/:_id", async (req, res) => {
     event.comments.push(comment)
     await event.save({ session: sess })
     await sess.commitTransaction()
+})
+
+router.get("/:id/comments", async (req, res) => {
+    const eventId = req.params.id
+
+    let event
+    let comment
+    try
+    {
+        event = await Event.findById(eventId).populate("comments")
+    } catch (error)
+    {
+
+    }
 })
 
 module.exports = router

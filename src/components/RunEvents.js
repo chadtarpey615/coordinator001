@@ -70,7 +70,7 @@ const RunEvents = ({ event, deleteEvent }) => {
     }
 
     const addUserComment = async (id) => {
-
+        console.log(id)
         if (!user)
         {
             alert("please log in first to continue")
