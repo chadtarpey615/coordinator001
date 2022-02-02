@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Card from '../components/Card'
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import EventContext from '../context/events/EventContext';
-import { updateEvent, addComment } from "../context/events/EventActions"
+import { updateEvent, addComment, getComments } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, dispatch } = useContext(EventContext)
+    const { events, comments, dispatch } = useContext(EventContext)
     const { user } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
@@ -27,6 +27,10 @@ const RunEvents = ({ event, deleteEvent }) => {
         date: "",
         distance: null
     })
+
+    useEffect(() => {
+        getComments(event._id)
+    }, [])
 
     const onChange = e => setUpdateEventData({ ...updateEventData, [e.target.name]: e.target.value })
 

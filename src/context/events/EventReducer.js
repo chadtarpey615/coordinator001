@@ -36,6 +36,14 @@ const eventReducer = (state, action) => {
                 comments: action.payload.comments
             }
 
+        case "GET_COMMENTS":
+            console.log("reducer", state)
+            return {
+                ...state,
+                events: action.payload.comments,
+                isLoading: false
+            }
+
         case "DELETE_COMMENT":
             console.log(state.events.comments)
             return {

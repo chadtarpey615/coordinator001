@@ -159,16 +159,24 @@ router.post("/:_id", async (req, res) => {
 
 router.get("/:id/comments", async (req, res) => {
     const eventId = req.params.id
-
     let event
     let comment
-    try
-    {
-        event = await Event.findById(eventId).populate("comments")
-    } catch (error)
-    {
 
-    }
+    event = await Event.findById(eventId).populate("comments").exec(function (err, user) {
+        if (err) return handleError(err);
+        // console.log(user);
+    })
+
+
+
+    // res.json(event)
+
+    console.log("after", event)
+
+
+    // const comments = await Comments.find({})
+    // console.log("for comments", event)
+
 })
 
 module.exports = router

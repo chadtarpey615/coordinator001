@@ -42,7 +42,7 @@ const eventSchema = mongoose.Schema({
         {
             type: mongoose.Types.ObjectId,
             required: true,
-            ref: "Comment"
+            ref: "Comments"
         }
     ]
 

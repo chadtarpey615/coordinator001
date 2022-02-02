@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useCallback } from 'react'
 import EventContext from '../context/events/EventContext'
-import { getEvents, removeEvent } from '../context/events/EventActions'
+import { getEvents, removeEvent, getComments } from '../context/events/EventActions'
 import RunEvents from '../components/RunEvents'
 
 
@@ -10,7 +10,7 @@ const Events = () => {
     const getAllEvents = async () => {
 
         const data = await getEvents()
-
+        console.log("event.js", data.events)
         dispatch({
             type: "GET_EVENTS",
             payload: data
