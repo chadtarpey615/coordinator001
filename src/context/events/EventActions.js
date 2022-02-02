@@ -80,9 +80,9 @@ export const addComment = async (data) => {
     }
 }
 
-export const getComments = async (comments) => {
-
-    const response = await axios.get("/api/events/comments")
+export const deleteComment = async (id) => {
+    console.log("ididid", id)
+    const response = await axios.get(`/api/events/${id}/comments`)
     // console.log("resrersr", response, events)
-    return { comments: response.data }
+    return { events: response.data }
 }

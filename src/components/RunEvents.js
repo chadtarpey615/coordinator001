@@ -11,6 +11,7 @@ import { updateEvent, addComment } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
@@ -94,6 +95,19 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     }
 
+    const deleteComment = (e, event, id) => {
+        // console.log(e, event._id, id)
+        const commentInfo = {
+            event: event._id,
+            comment: id
+        }
+
+        dispatch({
+            type: "DELETE_COMMENT",
+            paylaod: commentInfo
+        })
+    }
+
     const { name, date, distance, _id, creator } = event
 
     const style = {
@@ -120,7 +134,8 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h3>Comments</h3>
                 {event.comments.map((comment) => (
                     <div className="card">
-                        <h4>{comment.name} :</h4><p>{comment.comment}</p>
+                        <p>{comment.name} : {comment.comment}</p>
+                        <DeleteIcon onClick={(e) => deleteComment(e, event, comment._id)} />
                         <Divider />
                     </div>
                 ))}

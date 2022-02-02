@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useCallback } from 'react'
 import EventContext from '../context/events/EventContext'
 import { getEvents, removeEvent } from '../context/events/EventActions'
 import RunEvents from '../components/RunEvents'
@@ -7,21 +7,24 @@ import RunEvents from '../components/RunEvents'
 const Events = () => {
     const { events, dispatch } = useContext(EventContext)
 
-    useEffect(() => {
-
-
-        getAllEvents()
-        console.log("", events)
-    }, [events, getAllEvents])
-
     const getAllEvents = async () => {
+
         const data = await getEvents()
 
         dispatch({
             type: "GET_EVENTS",
             payload: data
         })
+
     }
+
+    useEffect(() => {
+
+
+        getAllEvents()
+        console.log("", events)
+    }, [])
+
     const deleteEvent = async (e, id) => {
 
         removeEvent(id)
@@ -48,5 +51,6 @@ const Events = () => {
         </div>
     )
 }
+
 
 export default Events
