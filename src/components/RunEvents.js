@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import EventContext from '../context/events/EventContext';
-import { updateEvent, addComment, getComments } from "../context/events/EventActions"
+import { updateEvent, addComment, deleteComment } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, comments, dispatch } = useContext(EventContext)
+    const { events, dispatch } = useContext(EventContext)
     const { user } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
@@ -28,9 +28,12 @@ const RunEvents = ({ event, deleteEvent }) => {
         distance: null
     })
 
-    useEffect(() => {
-        getComments(event._id)
-    }, [])
+
+
+
+
+
+
 
     const onChange = e => setUpdateEventData({ ...updateEventData, [e.target.name]: e.target.value })
 
@@ -99,12 +102,14 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     }
 
-    const deleteComment = (e, event, id) => {
-        // console.log(e, event._id, id)
-        const commentInfo = {
+    const eventDeleteComment = async (e, event, id) => {
+        console.log(event._id, id)
+
+
+        const commentInfo = await deleteComment({
             event: event._id,
             comment: id
-        }
+        })
 
         dispatch({
             type: "DELETE_COMMENT",
@@ -139,7 +144,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                 {event.comments.map((comment) => (
                     <div className="card">
                         <p>{comment.name} : {comment.comment}</p>
-                        <DeleteIcon onClick={(e) => deleteComment(e, event, comment._id)} />
+                        <DeleteIcon onClick={(e) => eventDeleteComment(e, event, comment._id)} />
                         <Divider />
                     </div>
                 ))}

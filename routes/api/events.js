@@ -6,6 +6,7 @@ const User = require("../../models/User");
 const Comments = require("../../models/Comments");
 
 
+// create new event
 router.post("/", async (req, res) => {
 
     const { user, name, distance, date, creator } = req.body
@@ -43,17 +44,21 @@ router.post("/", async (req, res) => {
 
 })
 
-router.get("/all-events", async (req, res) => {
-    const events = await Event.find({})
 
-    res.json(events)
+// get all events with comments
+router.get("/all-events", async (req, res) => {
+    let events
+    await Event.find({}).populate("comments").exec(function (err, user) {
+        events = user
+        res.json(events)
+    })
+
 
 })
 
-// router.get("/comments", async (req, res) => {
-//     const comments = 
-// })
 
+
+// delete event
 router.get("/:id", async (req, res) => {
 
     const eventId = req.params.id
@@ -92,6 +97,8 @@ router.get("/:id", async (req, res) => {
 
 })
 
+
+// update event 
 router.put("/all-events/:id", async (req, res) => {
     const eventId = req.params.id
     const { name, distance, date } = req.body
@@ -122,6 +129,8 @@ router.put("/all-events/:id", async (req, res) => {
 })
 
 
+
+// add comment to event
 router.post("/:_id", async (req, res) => {
     const eventId = req.params._id
 
@@ -157,26 +166,24 @@ router.post("/:_id", async (req, res) => {
     await sess.commitTransaction()
 })
 
-router.get("/:id/comments", async (req, res) => {
+
+router.get("/:id/comment/:id", async (req, res) => {
+
     const eventId = req.params.id
+
     let event
-    let comment
+    try
+    {
+        event = await Event.findById(eventId).populate("comments")
+        console.log("delete", event)
+        // event.delete()
 
-    event = await Event.findById(eventId).populate("comments").exec(function (err, user) {
-        if (err) return handleError(err);
-        // console.log(user);
-    })
-
-
-
-    // res.json(event)
-
-    console.log("after", event)
-
-
-    // const comments = await Comments.find({})
-    // console.log("for comments", event)
-
+    } catch (error)
+    {
+        console.log(error)
+    }
 })
+
+
 
 module.exports = router

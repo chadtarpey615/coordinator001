@@ -6,6 +6,8 @@ import axios from "axios";
 export const getEvents = async (events) => {
 
     const response = await axios.get("/api/events/all-events")
+    console.log("getEvents", response)
+
     return { events: response.data }
 }
 export const createEvent = async (event) => {
@@ -80,15 +82,9 @@ export const addComment = async (data) => {
     }
 }
 
-export const getComments = async (data) => {
-    const response = await axios.get(`/api/events/${data}/comments`)
-    console.log("actions", response)
-    return { comments: response.data }
-}
-
 export const deleteComment = async (id) => {
-    console.log("ididid", id)
-    const response = await axios.get(`/api/events/${id}/comments`)
-    // console.log("resrersr", response, events)
+    const { event, comment } = id
+    console.log("action delete", event, "comment", comment)
+    const response = await axios.get(`/api/events/${event}/comment/${comment}`)
     return { events: response.data }
 }
