@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useCallback } from 'react'
+import React, { useEffect, useContext } from 'react'
 import EventContext from '../context/events/EventContext'
-import { getEvents, removeEvent, getComments } from '../context/events/EventActions'
+import { getEvents, removeEvent } from '../context/events/EventActions'
 import RunEvents from '../components/RunEvents'
 
 
@@ -23,7 +23,7 @@ const Events = () => {
 
         getAllEvents()
         console.log("", events)
-    }, [])
+    })
 
     const deleteEvent = async (e, id) => {
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import Card from '../components/Card'
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
