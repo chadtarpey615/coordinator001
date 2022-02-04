@@ -113,7 +113,7 @@ const RunEvents = ({ event, deleteEvent }) => {
 
         dispatch({
             type: "DELETE_COMMENT",
-            paylaod: commentInfo
+            payload: commentInfo
         })
     }
 

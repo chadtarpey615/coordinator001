@@ -167,16 +167,21 @@ router.post("/:_id", async (req, res) => {
 })
 
 
-router.get("/:id/comment/:id", async (req, res) => {
+router.get("/:id/:comment", async (req, res) => {
 
     const eventId = req.params.id
-
+    const commentId = req.params.comment
+    console.log(req.params)
     let event
+    let comment
     try
     {
-        event = await Event.findById(eventId).populate("comments")
-        console.log("delete", event)
-        // event.delete()
+        event = await Event.findById(eventId)
+        comment = await Comments.findById(commentId)
+
+        // need to add user check for ownership of comment 
+        comment.delete()
+
 
     } catch (error)
     {

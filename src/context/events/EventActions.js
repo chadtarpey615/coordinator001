@@ -85,6 +85,6 @@ export const addComment = async (data) => {
 export const deleteComment = async (id) => {
     const { event, comment } = id
     console.log("action delete", event, "comment", comment)
-    const response = await axios.get(`/api/events/${event}/comment/${comment}`)
+    const response = await axios.get(`/api/events/${event}/${comment}`)
     return { events: response.data }
 }
