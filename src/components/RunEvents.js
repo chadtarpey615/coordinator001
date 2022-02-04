@@ -30,11 +30,6 @@ const RunEvents = ({ event, deleteEvent }) => {
 
 
 
-
-
-
-
-
     const onChange = e => setUpdateEventData({ ...updateEventData, [e.target.name]: e.target.value })
 
     const handleOpen = (id) => {
@@ -70,7 +65,6 @@ const RunEvents = ({ event, deleteEvent }) => {
                     payload: eventUpdateInfo
                 })
 
-                window.location.reload()
             }
 
         }
