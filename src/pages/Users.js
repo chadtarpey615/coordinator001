@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import UserContext from "../context/users/UserContext"
 import Card from "../components/Card"
 import { allUsers } from "../context/users/UserActions"
+import PeopleIcon from '@mui/icons-material/People';
 const Users = () => {
     const { user, users, isLoading, dispatch } = useContext(UserContext)
 
@@ -12,6 +13,10 @@ const Users = () => {
             type: "ALL_USERS",
             payload: usersData
         })
+    }
+
+    const addFriend = () => {
+        console.log("hiot")
     }
 
     useEffect(() => {
@@ -32,6 +37,7 @@ const Users = () => {
                     <h1>{user.username}</h1>
                     <p>Has Events: {user.events.length}</p>
                     {/* <p>Has Followers: {user.followers.length}</p> */}
+                    <button onClick={() => addFriend(user)}><PeopleIcon /></button>
                 </Card>
             ))}
         </div>
