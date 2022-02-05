@@ -21,10 +21,10 @@ const userReducer = (state, action) => {
             return {}
 
         case "ALL_USERS":
-            console.log("user hit")
+            console.log("user hit", action)
             return {
                 ...state,
-                users: action.payload,
+                users: action.payload.users,
                 isLoading: false
             }
 

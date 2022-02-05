@@ -27,7 +27,13 @@ const userSchema = new mongoose.Schema({
             required: true,
             ref: "Event"
         }
-    ]
+    ],
+
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Friends'
+        }]
 
 })
 
