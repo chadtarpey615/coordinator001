@@ -20,6 +20,14 @@ const userReducer = (state, action) => {
         case "LOGOUT_USER":
             return {}
 
+        case "ALL_USERS":
+            console.log("user hit")
+            return {
+                ...state,
+                users: action.payload,
+                isLoading: false
+            }
+
         default:
             return state
     }

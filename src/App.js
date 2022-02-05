@@ -9,6 +9,7 @@ import Calendars from "./pages/Calendars"
 import "./App.css"
 import Events from "./pages/Events"
 import Home from "./pages/Home"
+import Users from "./pages/Users";
 function App() {
   return (
     <UserProvider>
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/users" element={<Users />} />
               <Route path="/calendar" element={<Calendars />} />
               <Route path="/events" element={<Events />} />
             </Routes>

@@ -61,3 +61,11 @@ exports.login = async (req, res) => {
         email: user.email
     })
 }
+
+exports.allUsers = async (req, res) => {
+    let users
+
+    users = await User.find({})
+
+    res.json(users)
+}

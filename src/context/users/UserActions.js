@@ -36,5 +36,11 @@ export const login = async ({ email, password }) => {
 }
 
 
+export const allUsers = async () => {
+    const response = await axios.get("/api/users/users")
+    return { users: response.data }
+}
+
+
 
 

@@ -7,6 +7,7 @@ const UserContext = createContext()
 export const UserProvider = ({ children }) => {
     const initialState = {
         user: {},
+        users: [],
         isLoading: false
     }
 
