@@ -32,14 +32,16 @@ const Users = () => {
                     <h1>Run Fit Friends </h1>
                 </div>
             </div>
-            {users.map((data) => (
+            {users ? users.map((data) => (
                 <Card>
                     <h1>{data.username}</h1>
                     <p>Has Events: {data.events.length}</p>
                     {/* <p>Has Followers: {data.followers.length}</p> */}
                     <button onClick={() => addFriend(user, data)}><PeopleIcon /></button>
                 </Card>
-            ))}
+            )) : (
+                    <h1>No Users</h1>
+                )}
         </div>
     )
 }

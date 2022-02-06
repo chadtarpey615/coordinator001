@@ -2,7 +2,8 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const config = require("config")
 const User = require("../models/User")
-
+const Friends = require("../models/Friends")
+const Mongoose = require("mongoose")
 exports.createUser = async (req, res) => {
     console.log("User Routes hitt")
     const { username, email, password } = req.body;
@@ -68,4 +69,45 @@ exports.allUsers = async (req, res) => {
     users = await User.find({})
 
     res.json(users)
+}
+
+exports.addFriend = async (req, res) => {
+    const { id, friend } = req.params
+
+    let user
+    let newFriend
+
+    try
+    {
+        newFriend = await User.findById(friend)
+        newFriend = await new Friends({
+            _id: newFriend._id,
+            // email: newFriend.email,
+            // username: newFriend.username
+        })
+
+        newFriend.save()
+        user = await User.findById(id).populate("friends")
+
+
+        console.log(newFriend)
+    } catch (error)
+    {
+        console.log(error)
+    }
+
+    try
+    {
+
+        const sess = await Mongoose.startSession()
+        sess.startTransaction()
+        await user.save({ session: sess })
+        user.friends.push(newFriend)
+        await user.save({ session: sess })
+        await sess.commitTransaction()
+
+    } catch (error)
+    {
+        console.log(error)
+    }
 }
