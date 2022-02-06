@@ -28,6 +28,12 @@ const userReducer = (state, action) => {
                 isLoading: false
             }
 
+        case "ADD_FRIEND":
+            return {
+                ...state,
+                friends: action.payload
+            }
+
         default:
             return state
     }

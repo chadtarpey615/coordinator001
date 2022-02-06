@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import UserContext from "../context/users/UserContext"
 import Card from "../components/Card"
-import { allUsers } from "../context/users/UserActions"
+import { allUsers, addNewFriend } from "../context/users/UserActions"
 import PeopleIcon from '@mui/icons-material/People';
 const Users = () => {
     const { user, users, isLoading, dispatch } = useContext(UserContext)
@@ -15,8 +15,8 @@ const Users = () => {
         })
     }
 
-    const addFriend = () => {
-        console.log("hiot")
+    const addFriend = (friend, data) => {
+        addNewFriend(friend._id, data)
     }
 
     useEffect(() => {
@@ -32,12 +32,12 @@ const Users = () => {
                     <h1>Run Fit Friends </h1>
                 </div>
             </div>
-            {users.map((user) => (
+            {users.map((data) => (
                 <Card>
-                    <h1>{user.username}</h1>
-                    <p>Has Events: {user.events.length}</p>
-                    {/* <p>Has Followers: {user.followers.length}</p> */}
-                    <button onClick={() => addFriend(user)}><PeopleIcon /></button>
+                    <h1>{data.username}</h1>
+                    <p>Has Events: {data.events.length}</p>
+                    {/* <p>Has Followers: {data.followers.length}</p> */}
+                    <button onClick={() => addFriend(user, data)}><PeopleIcon /></button>
                 </Card>
             ))}
         </div>

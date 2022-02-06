@@ -41,6 +41,14 @@ export const allUsers = async () => {
     return { users: response.data }
 }
 
+export const addNewFriend = async (friend, data) => {
+    console.log("friend", friend, data._id)
+
+    const response = axios.post(`/api/users/${friend}/${data._id}`)
+
+    return { users: response.data }
+}
+
 
 
 
