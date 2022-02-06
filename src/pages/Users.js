@@ -5,7 +5,7 @@ import { allUsers, addNewFriend } from "../context/users/UserActions"
 import PeopleIcon from '@mui/icons-material/People';
 import image from "../images/avatar.jpeg"
 const Users = () => {
-    const { user, users, isLoading, dispatch } = useContext(UserContext)
+    const { user, users, dispatch } = useContext(UserContext)
 
     const getAllUsers = async () => {
 
@@ -24,7 +24,7 @@ const Users = () => {
         getAllUsers()
         console.log(users)
 
-    }, [])
+    })
     return (
         <div>
             <div className="row">
