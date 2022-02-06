@@ -82,8 +82,8 @@ exports.addFriend = async (req, res) => {
         newFriend = await User.findById(friend)
         newFriend = await new Friends({
             _id: newFriend._id,
-            // email: newFriend.email,
-            // username: newFriend.username
+            email: newFriend.email,
+            username: newFriend.username
         })
 
         newFriend.save()

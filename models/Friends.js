@@ -6,10 +6,15 @@ const friendsSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'
     },
-    recipient: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+    username: {
+        type: String,
+        required: true
     },
+
+    email: {
+        type: String,
+        required: true
+    }
     // status: {
     //     type: Number,
     //     enums: [
