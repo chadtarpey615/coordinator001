@@ -50,5 +50,11 @@ export const addNewFriend = async (friend, data) => {
 }
 
 
+export const getUserFriends = async (id) => {
+    console.log("user friends")
+    const response = axios.get(`/api/users/${id}`)
+}
+
+
 
 

@@ -113,3 +113,24 @@ exports.addFriend = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.getFriendsForUser = async (req, res) => {
+    console.log("usercont")
+    const userId = req.params.id
+
+    let user
+
+    try
+    {
+        user = await User.findById(userId).populate("friends")
+        const { friends } = user
+        for (let i = 0; i < friends.length; i++)
+        {
+            let userFriends = []
+            friends[i] = await Friends.findById
+        }
+    } catch (error)
+    {
+        console.log(error)
+    }
+}

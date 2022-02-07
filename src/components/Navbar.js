@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import UserContext from '../context/users/UserContext';
-
+import { useNavigate } from "react-router-dom"
+import { getUserFriends } from "../context/users/UserActions"
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -11,17 +12,27 @@ import Box from '@mui/material/Box';
 const Navbar = () => {
     const { user, dispatch } = useContext(UserContext)
     const [open, setOpen] = useState(false)
-
+    const history = useNavigate()
 
     useEffect(() => {
 
         console.log("navbar", user)
+        if (user)
+        {
+            const userFriends = getUserFriends(user._id)
+
+            dispatch({
+                type: "GET_FRIENDS",
+                payload: userFriends
+            })
+        }
     }, [user])
 
     const logout = () => {
         dispatch({
             type: "LOGOUT_USER"
         })
+        history.push("/")
     }
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false);
