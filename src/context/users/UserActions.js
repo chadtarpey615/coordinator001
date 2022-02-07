@@ -31,7 +31,7 @@ export const login = async ({ email, password }) => {
 
 
     const response = await axios.post("/api/users/login", { email, password }, config)
-
+    console.log(response)
     return { user: response.data }
 }
 

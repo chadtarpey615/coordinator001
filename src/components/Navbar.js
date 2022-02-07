@@ -1,11 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import UserContext from '../context/users/UserContext';
 
+import Stack from '@mui/material/Stack';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
 
 const Navbar = () => {
     const { user, dispatch } = useContext(UserContext)
+    const [open, setOpen] = useState(false)
 
 
     useEffect(() => {
@@ -18,6 +23,20 @@ const Navbar = () => {
             type: "LOGOUT_USER"
         })
     }
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false);
+
+    const style = {
+        position: 'absolute',
+        top: '11%',
+        left: '93%',
+        transform: 'translate(-50%, -50%)',
+        width: 150,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
 
     return (
         <>
@@ -63,6 +82,30 @@ const Navbar = () => {
                                         <Link className="nav-link active text-white" aria-current="page" to="/login">Sign In</Link>
                                     </li>
                                 </ul>
+                            )}
+
+                        {user.friends ? (
+                            <>
+                                <li onClick={handleOpen} className="nav-link active text-white" aria-current="page" >Friends</li>
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={style}>
+                                        <Stack spacing={2}>
+
+
+                                            <h6>hi</h6>
+
+                                        </Stack>
+                                    </Box>
+                                </Modal>
+                            </>
+                        ) : (
+                                <p></p>
+
                             )}
 
 

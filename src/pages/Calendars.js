@@ -60,7 +60,7 @@ const Calendars = () => {
                 <DayPicker onDayClick={(e) => setSelectDay(e)} />
             </div>
 
-            <div className="col-md-6 col-sm-12 mt-5">
+            <div className="col-md-6 d-flex justify-content-center col-sm-12 mt-5">
 
                 <form className="run-form" onSubmit={enterEventHandler}>
                     <h1 className="mx-4 text-light">Add run event form </h1>
@@ -86,11 +86,9 @@ const Calendars = () => {
 
                     </div>
                     <div >
-                        <Stack>
 
-                            <button>Enter Event</button>
-                            <button><Link to="events">See All Events</Link> </button>
-                        </Stack>
+                        <button>Enter Event</button>
+                        <button><Link to="events">See All Events</Link> </button>
 
 
                     </div>
