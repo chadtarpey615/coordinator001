@@ -24,7 +24,7 @@ const Users = () => {
         getAllUsers()
         console.log(users)
 
-    })
+    }, [])
     return (
         <div>
             <div className="row">

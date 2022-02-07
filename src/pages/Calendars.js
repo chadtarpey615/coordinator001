@@ -51,15 +51,16 @@ const Calendars = () => {
 
     }
     return (
+
         <div className="row">
 
 
-            <div className="col-md-6 my-5">
+            <div className="col-md-6 col-sm-12 my-5">
                 <h1 className="mx-5 text-light">Run Fit</h1>
                 <DayPicker onDayClick={(e) => setSelectDay(e)} />
             </div>
 
-            <div className="col-md-6 mt-5">
+            <div className="col-md-6 col-sm-12 mt-5">
 
                 <form className="run-form" onSubmit={enterEventHandler}>
                     <h1 className="mx-4 text-light">Add run event form </h1>

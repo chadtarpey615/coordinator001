@@ -1,8 +1,8 @@
-.calendar-container {
+/* .calendar-container {
     display: grid;
     background: linear-gradient(to right, #072f5f, #1261a0);
     grid-template-columns: repeat(2, 1fr);
-}
+} */
 
 .DayPicker-Month {
     height: 60vh;
@@ -52,4 +52,14 @@ a {
 
     background: black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 767px) {
+    .DayPicker-Month {
+        width: 80vw;
+    }
+
+    .run-form input {
+        width: 50vw;
+    }
 }

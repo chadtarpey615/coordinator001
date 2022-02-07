@@ -126,7 +126,9 @@ const RunEvents = ({ event, deleteEvent }) => {
     };
 
     return (
+
         <>
+
             <Card>
                 <DirectionsRunIcon />
                 <h1>Event Title: <span>{name}</span></h1>

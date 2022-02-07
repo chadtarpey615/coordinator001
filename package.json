@@ -2,12 +2,7 @@
     "name": "coordinator001",
     "version": "0.1.0",
     "private": true,
-    "proxy": {
-        "/api": {
-            "target": "https://localhost:3001",
-            "secure": false
-        }
-    },
+    "proxy": "http://localhost:3001/",
     "dependencies": {
         "@emotion/react": "^11.7.1",
         "@emotion/styled": "^11.6.0",

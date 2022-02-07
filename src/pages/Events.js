@@ -23,7 +23,7 @@ const Events = () => {
 
         getAllEvents()
         console.log("", events)
-    })
+    }, [])
 
     const deleteEvent = async (e, id) => {
 
@@ -38,17 +38,25 @@ const Events = () => {
         window.location.reload()
     }
     return (
-        <div className="row ">
-            <div className="col-md-12 d-flex justify-content-center mt-5">
+        <div className="row">
+            <div className="col-md-12  d-flex justify-content-center">
                 <h1>All Events</h1>
             </div>
-            <div className="card-container mt-5">
+
+
+
+
+            <div className="card-container">
 
                 {
                     events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
                 }
             </div>
         </div>
+
+
+
+
     )
 }
 
