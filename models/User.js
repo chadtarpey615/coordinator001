@@ -31,15 +31,9 @@ const userSchema = new mongoose.Schema({
 
     friends: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-
-            ref: 'Friends',
-            username: {
-                type: String
-            }
-        },
-
-    ]
+            type: mongoose.Types.ObjectId,
+            ref: 'Friends'
+        }]
 
 })
 

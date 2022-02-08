@@ -108,13 +108,13 @@ exports.addFriend = async (req, res) => {
         await user.save({ session: sess })
         await sess.commitTransaction()
 
-    } catch (error)
+    } catch (error) 
     {
         console.log(error)
     }
 }
 
-exports.getFriendsForUser = async (req, res) => {
+exports.getFriendsForUser = async (req, res, next) => {
     console.log("usercont")
     const userId = req.params.id
 
@@ -124,11 +124,16 @@ exports.getFriendsForUser = async (req, res) => {
     {
         user = await User.findById(userId).populate("friends")
         const { friends } = user
+        let userFriends = []
         for (let i = 0; i < friends.length; i++)
         {
-            let userFriends = []
-            friends[i] = await Friends.findById
+            // res.json(friends[i].username)
+            userFriends.push(friends[i].username)
+            // friends[i] = await Friends.findById
+            // res.json(userFriends)
         }
+        res.json(userFriends)
+        next()
     } catch (error)
     {
         console.log(error)

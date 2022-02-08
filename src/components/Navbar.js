@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 
 
 const Navbar = () => {
-    const { user, dispatch } = useContext(UserContext)
+    const { user, friends, dispatch } = useContext(UserContext)
     const [open, setOpen] = useState(false)
     const history = useNavigate()
 
@@ -26,6 +26,7 @@ const Navbar = () => {
                 payload: userFriends
             })
         }
+        console.log(friends)
     }, [user])
 
     const logout = () => {

@@ -35,6 +35,7 @@ const userReducer = (state, action) => {
             }
 
         case "GET_FRIENDS":
+            console.log(action.payload)
             return {
                 ...state,
                 friends: action.payload

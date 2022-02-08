@@ -52,7 +52,8 @@ export const addNewFriend = async (friend, data) => {
 
 export const getUserFriends = async (id) => {
     console.log("user friends")
-    const response = axios.get(`/api/users/${id}`)
+    const response = await axios.get(`/api/users/${id}`)
+    return { friends: response.data }
 }
 
 

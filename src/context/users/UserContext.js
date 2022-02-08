@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
     const initialState = {
         user: {},
         users: [],
+        friends: [],
         isLoading: false
     }
 
