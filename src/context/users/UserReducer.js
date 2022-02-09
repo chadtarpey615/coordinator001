@@ -38,7 +38,7 @@ const userReducer = (state, action) => {
             console.log(action.payload)
             return {
                 ...state,
-                friends: action.payload
+                friends: action.payload.friends
             }
 
         default:

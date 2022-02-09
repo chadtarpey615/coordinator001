@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import UserContext from "../context/users/UserContext"
-import { register } from "../context/users/UserActions"
+import { register, login } from "../context/users/UserActions"
 
 const SignUp = () => {
     const { dispatch } = useContext(UserContext)
@@ -38,6 +38,7 @@ const SignUp = () => {
                 type: "SIGNUP_USER",
                 payload: newUser
             })
+
         }
     }
 

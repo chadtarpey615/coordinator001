@@ -14,21 +14,11 @@ const Navbar = () => {
     const [open, setOpen] = useState(false)
     const history = useNavigate()
 
-    useEffect(() => {
 
-        console.log("navbar", user)
-        if (user)
-        {
-            const userFriends = getUserFriends(user._id)
 
-            dispatch({
-                type: "GET_FRIENDS",
-                payload: userFriends
-            })
-        }
-        console.log(friends)
-    }, [user])
 
+
+    console.log(friends)
     const logout = () => {
         dispatch({
             type: "LOGOUT_USER"
@@ -109,7 +99,9 @@ const Navbar = () => {
                                         <Stack spacing={2}>
 
 
-                                            <h6>hi</h6>
+                                            {friends.map((friend) => (
+                                                <h6>{friend}</h6>
+                                            ))}
 
                                         </Stack>
                                     </Box>

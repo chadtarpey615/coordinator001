@@ -119,23 +119,19 @@ exports.getFriendsForUser = async (req, res, next) => {
     const userId = req.params.id
 
     let user
+    let userFriends = []
 
-    try
+
+    user = await User.findById(userId).populate("friends")
+    const { friends } = user
+    for (let i = 0; i < friends.length; i++)
     {
-        user = await User.findById(userId).populate("friends")
-        const { friends } = user
-        let userFriends = []
-        for (let i = 0; i < friends.length; i++)
-        {
-            // res.json(friends[i].username)
-            userFriends.push(friends[i].username)
-            // friends[i] = await Friends.findById
-            // res.json(userFriends)
-        }
-        res.json(userFriends)
-        next()
-    } catch (error)
-    {
-        console.log(error)
+        // res.json(friends[i].username)
+        userFriends.push(friends[i].username)
+        // friends[i] = await Friends.findById
+        // res.json(userFriends)
     }
+    res.json(userFriends)
+    next()
+
 }

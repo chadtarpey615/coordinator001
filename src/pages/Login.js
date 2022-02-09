@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
-import { login } from "../context/users/UserActions"
+import { login, getUserFriends } from "../context/users/UserActions"
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
@@ -31,11 +31,18 @@ const Login = () => {
 
 
         const userInfo = await login({ email, password })
-
+        console.log(userInfo.user)
         dispatch({
             type: "LOGIN_USER",
             payload: userInfo
         })
+        const userFriends = await getUserFriends(userInfo.user._id)
+        dispatch({
+            type: "GET_FRIENDS",
+            payload: userFriends
+        })
+
+
         history("/calendar")
 
     }
