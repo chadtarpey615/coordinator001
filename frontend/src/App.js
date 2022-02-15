@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { UserProvider } from "./context/users/UserContext"
 import { EventProvider } from "./context/events/EventContext"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import Container from '@mui/material/Container';
 import Navbar from "./components/Navbar"
 import SignUp from "./pages/SignUp"
@@ -27,6 +29,7 @@ function App() {
               <Route path="/events" element={<Events />} />
             </Routes>
           </Router>
+          <ToastContainer />
         </Container>
       </EventProvider>
     </UserProvider>
