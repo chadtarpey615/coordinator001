@@ -1,5 +1,6 @@
 const express = require("express")
 const connectDB = require("./config/db")
+const dotenv = require("dotenv").config()
 const app = express();
 const path = require("path");
 // const userRoutes = require("./routes/api/users")
@@ -10,6 +11,7 @@ const PORT = 3001
 connectDB()
 
 // init middleware
+app.use(express.json())
 app.use(express.json({ extended: false }))
 
 app.get('/', (req, res) => {
