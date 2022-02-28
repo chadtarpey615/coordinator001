@@ -5,10 +5,12 @@ import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import UserContext from "../context/users/UserContext"
-import { register, login } from "../context/users/UserActions"
+// import { register, login } from "../context/users/UserActions"
+import { register } from "../features/auth/authSlice"
+import { useSelector, useDispatch } from "react-redux";
 
 const SignUp = () => {
-    const { dispatch } = useContext(UserContext)
+    // const { dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         username: "",
         email: "",
@@ -16,6 +18,8 @@ const SignUp = () => {
         password2: ""
     })
 
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.user)
 
 
     const { username, email, password, password2 } = loginData
@@ -32,12 +36,13 @@ const SignUp = () => {
             alert("invalid info")
         } else
         {
-            const newUser = await register({ username, email, password })
+            const newUser = {
+                username,
+                email,
+                password
+            }
 
-            dispatch({
-                type: "SIGNUP_USER",
-                payload: newUser
-            })
+            dispatch(register(newUser))
 
         }
     }
