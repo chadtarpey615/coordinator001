@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -21,7 +21,9 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user)
 
-
+    useEffect(() => {
+        console.log(user)
+    })
     const { username, email, password, password2 } = loginData
 
     const onChange = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })

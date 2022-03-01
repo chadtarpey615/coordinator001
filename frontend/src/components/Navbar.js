@@ -3,27 +3,27 @@ import { Link } from "react-router-dom";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import UserContext from '../context/users/UserContext';
 import { useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
 import { getUserFriends } from "../context/users/UserActions"
+import { logout } from "../features/auth/authSlice"
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 
 const Navbar = () => {
-    const { user, friends, dispatch } = useContext(UserContext)
+    // const { user, friends } = useContext(UserContext)
+    const { user } = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
     const history = useNavigate()
+    const dispatch = useDispatch()
 
 
 
 
+    const userLogout = () => {
 
-    console.log(friends)
-    const logout = () => {
-        dispatch({
-            type: "LOGOUT_USER"
-        })
-        history.push("/")
+        dispatch(logout())
     }
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false);
@@ -71,7 +71,7 @@ const Navbar = () => {
                                     <li className="nav-link active text-white" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
                                 </li>
                                 <li className="nav-item">
-                                    <Link onClick={logout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</Link>
+                                    <Link onClick={userLogout} className="nav-link active text-white" aria-current="page" to="/login">Log Out</Link>
                                 </li>
                             </ul>
                         ) : (
@@ -86,7 +86,7 @@ const Navbar = () => {
                                 </ul>
                             )}
 
-                        {user.friends ? (
+                        {/* {user.friends ? (
                             <>
                                 <li onClick={handleOpen} className="nav-link active text-white" aria-current="page" >Friends</li>
                                 <Modal
@@ -110,7 +110,7 @@ const Navbar = () => {
                         ) : (
                                 <p></p>
 
-                            )}
+                            )} */}
 
 
                     </div>

@@ -4,45 +4,59 @@ const config = require("config")
 const User = require("../models/User")
 const Friends = require("../models/Friends")
 const Mongoose = require("mongoose")
+
+
 exports.createUser = async (req, res) => {
     console.log("User Routes hitt")
     const { username, email, password } = req.body;
 
     try
     {
-        let user = await User.findOne({ email: email })
+        const userExist = await User.findOne({ email: email })
 
-        if (user)
+        if (userExist)
         {
             return res.status(400).json({ msg: "User Already Exist" })
         }
 
-        user = new User({
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt)
+
+        const user = await User.create({
             username,
             email,
-            password
+            password: hashedPassword
         })
 
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(password, salt)
-
-        // return json token 
-        const payload = {
-            user: {
-                id: user.id
-            }
+        if (user)
+        {
+            res.status(201).json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                token: generateToken(user._id)
+            })
         }
 
-        jwt.sign(payload, config.get("jwtSecret"),
 
-            { expiresIn: 360000 },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token })
-            }
-        )
 
-        user.save()
+        // // return json token 
+        // const payload = {
+        //     user: {
+        //         id: user.id
+        //     }
+        // }
+
+        // jwt.sign(payload, config.get(process.env.JWTSECRET),
+
+        //     { expiresIn: 360000 },
+        //     (err, token) => {
+        //         if (err) throw err;
+        //         res.json({ token })
+        //     }
+        // )
+
+        // user.save()
 
 
     } catch (error)
@@ -50,6 +64,12 @@ exports.createUser = async (req, res) => {
         console.log(error.message);
         res.status(500).send("Server Error")
     }
+}
+
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWTSECRET, {
+        expiresIn: "30d"
+    })
 }
 
 exports.login = async (req, res) => {
