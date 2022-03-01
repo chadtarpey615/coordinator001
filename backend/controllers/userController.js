@@ -39,26 +39,6 @@ exports.createUser = async (req, res) => {
         }
 
 
-
-        // // return json token 
-        // const payload = {
-        //     user: {
-        //         id: user.id
-        //     }
-        // }
-
-        // jwt.sign(payload, config.get(process.env.JWTSECRET),
-
-        //     { expiresIn: 360000 },
-        //     (err, token) => {
-        //         if (err) throw err;
-        //         res.json({ token })
-        //     }
-        // )
-
-        // user.save()
-
-
     } catch (error)
     {
         console.log(error.message);
