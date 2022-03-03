@@ -56,6 +56,8 @@ exports.login = async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email })
 
+
+
     res.json({
         _id: user._id,
         username: user.username,

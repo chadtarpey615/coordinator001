@@ -4,15 +4,14 @@ import { useNavigate } from "react-router-dom"
 import UserContext from "../context/users/UserContext"
 import { login } from "../features/auth/authSlice"
 import { useSelector, useDispatch } from "react-redux";
-// import { login, getUserFriends } from "../context/users/UserActions"
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Spinner from "../components/Spinner"
 
 
 const Login = () => {
-    // const { dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
@@ -21,7 +20,7 @@ const Login = () => {
 
     const history = useNavigate()
     const dispatch = useDispatch();
-    const { user } = useSelector((state) => state.user)
+    const { user, isLoading } = useSelector((state) => state.user)
 
     const { email, password } = loginData
 
@@ -34,21 +33,17 @@ const Login = () => {
         console.log("hiiit")
 
 
-        const userInfo = await login({ email, password })
-        console.log(userInfo.user)
+        const userInfo = {
+            email,
+            password
+        }
         dispatch(login(userInfo))
-
-
-        // const userFriends = await getUserFriends(userInfo.user._id)
-        // dispatch({
-        //     type: "GET_FRIENDS",
-        //     payload: userFriends
-        // })
-
 
         history("/calendar")
 
     }
+
+    if (isLoading) { return <Spinner /> }
 
     return (
         <div>
