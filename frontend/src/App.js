@@ -14,25 +14,23 @@ import Home from "./pages/Home"
 import Users from "./pages/Users";
 function App() {
   return (
-    <UserProvider>
-      <EventProvider>
-        <Container maxWidth="xxl">
-          <Router>
-            <Navbar />
 
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/calendar" element={<Calendars />} />
-              <Route path="/events" element={<Events />} />
-            </Routes>
-          </Router>
-          <ToastContainer />
-        </Container>
-      </EventProvider>
-    </UserProvider>
+    <Container maxWidth="xxl">
+      <Router>
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/calendar" element={<Calendars />} />
+          <Route path="/events" element={<Events />} />
+        </Routes>
+      </Router>
+      <ToastContainer />
+    </Container>
+
   );
 }
 

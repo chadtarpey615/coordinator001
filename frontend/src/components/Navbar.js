@@ -14,6 +14,9 @@ import Box from '@mui/material/Box';
 const Navbar = () => {
     // const { user, friends } = useContext(UserContext)
     const { user } = useSelector((state) => state.user)
+    useEffect(() => {
+        console.log(user)
+    })
     const [open, setOpen] = useState(false)
     const history = useNavigate()
     const dispatch = useDispatch()

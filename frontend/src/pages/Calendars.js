@@ -4,6 +4,7 @@ import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import "../styles/calendar.css"
 import EventContext from "../context/events/EventContext";
+import { useSelector, useDispatch } from "react-redux";
 import { createEvent } from "../context/events/EventActions";
 import UserContext from "../context/users/UserContext";
 import TextField from '@mui/material/TextField';
@@ -13,13 +14,16 @@ import Stack from '@mui/material/Stack';
 
 
 const Calendars = () => {
-    const { dispatch } = useContext(EventContext)
-    const { user } = useContext(UserContext)
+    // const { dispatch } = useContext(EventContext)
+    // const { user } = useContext(UserContext)
+    const { user } = useSelector((state) => state.user)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
         name: "",
         distance: null
     })
+
+    const dispatch = useDispatch();
 
 
 
@@ -27,7 +31,6 @@ const Calendars = () => {
 
     const enterEventHandler = async (e) => {
         e.preventDefault()
-        console.log(user)
         if (!user)
         {
             alert("please log in first to continue")
@@ -42,10 +45,10 @@ const Calendars = () => {
 
             })
 
-            dispatch({
-                type: "CREATE_EVENT",
-                payload: eventInfo
-            })
+            // dispatch({
+            //     type: "CREATE_EVENT",
+            //     payload: eventInfo
+            // })
         }
 
 
