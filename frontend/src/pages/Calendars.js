@@ -9,14 +9,14 @@ import { createEvent } from "../context/events/EventActions";
 import UserContext from "../context/users/UserContext";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-
+import Spinner from "../components/Spinner"
 
 
 
 const Calendars = () => {
     // const { dispatch } = useContext(EventContext)
     // const { user } = useContext(UserContext)
-    const { user } = useSelector((state) => state.user)
+    const { user, isLoading } = useSelector((state) => state.user)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
         name: "",
@@ -24,6 +24,7 @@ const Calendars = () => {
     })
 
     const dispatch = useDispatch();
+
 
 
 
@@ -53,6 +54,8 @@ const Calendars = () => {
 
 
     }
+
+    if (isLoading) { return <Spinner /> }
     return (
 
         <div className="row">
