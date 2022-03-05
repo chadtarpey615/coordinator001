@@ -40,11 +40,15 @@ exports.createEvent = async (req, res) => {
 }
 
 exports.getAllEvents = async (req, res) => {
-    let events
-    await Event.find({}).populate("comments").exec(function (err, user) {
-        events = user
-        res.json(events)
-    })
+    // let events
+    // await Event.find({}).populate("comments").exec(function (err, user) {
+    //     events = user
+    //     res.json(events)
+    // })
+
+    const events = await Event.find({})
+    console.log(events)
+    res.json(events)
 }
 
 exports.deleteEvent = async (req, res) => {

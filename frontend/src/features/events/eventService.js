@@ -10,7 +10,17 @@ const getEvents = async (events) => {
 }
 
 
-const createEvent = async (event) => { }
+const createEvent = async (event, token) => {
+    const config = {
+        headers: {
+            Authoriztion: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.post(API_URL, event, config)
+
+    return response.data
+}
 
 const updateEvent = async (data) => { }
 

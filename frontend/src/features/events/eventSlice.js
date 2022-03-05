@@ -22,7 +22,14 @@ export const getEvents = createAsyncThunk("events/all", async (data, thunkAPI) =
 })
 
 export const createEvent = createAsyncThunk("events/all", async (data, thunkAPI) => {
+    try
+    {
+        const token = thunkAPI.getState().user.user.token
+        return await eventService.createEvent(data, token)
+    } catch (error)
+    {
 
+    }
 })
 
 export const updateEvent = createAsyncThunk("events/all", async (eventId, thunkAPI) => {

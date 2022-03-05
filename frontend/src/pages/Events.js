@@ -7,16 +7,13 @@ import RunEvents from '../components/RunEvents'
 const Events = () => {
 
 
-
     const dispatch = useDispatch();
+
     const { events } = useSelector((state) => state.events)
+    console.log("", events)
 
-    useEffect(() => {
 
 
-        dispatch(getEvents())
-        console.log("", events)
-    }, [dispatch])
 
     const deleteEvent = async (e, id) => {
 

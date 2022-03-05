@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import "../styles/calendar.css"
-import EventContext from "../context/events/EventContext";
+import { createEvent, getEvents } from "../features/events/eventSlice"
 import { useSelector, useDispatch } from "react-redux";
-import { createEvent } from "../context/events/EventActions";
-import UserContext from "../context/users/UserContext";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Spinner from "../components/Spinner"
@@ -14,9 +12,9 @@ import Spinner from "../components/Spinner"
 
 
 const Calendars = () => {
-    // const { dispatch } = useContext(EventContext)
-    // const { user } = useContext(UserContext)
+
     const { user, isLoading } = useSelector((state) => state.user)
+    const { events } = useSelector((state) => state.events)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
         name: "",
@@ -25,6 +23,12 @@ const Calendars = () => {
 
     const dispatch = useDispatch();
 
+
+    useEffect(() => {
+
+
+        dispatch(getEvents())
+    }, [dispatch])
 
 
 
@@ -38,13 +42,15 @@ const Calendars = () => {
         } else
         {
 
-            const eventInfo = await createEvent({
+            const eventInfo = {
                 user: user._id,
                 ...eventData,
                 date: selectDay,
                 creator: user.email
 
-            })
+            }
+
+            dispatch(createEvent(eventInfo))
 
             // dispatch({
             //     type: "CREATE_EVENT",

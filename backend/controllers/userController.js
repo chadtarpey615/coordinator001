@@ -63,7 +63,8 @@ exports.login = async (req, res) => {
         username: user.username,
         email: user.email,
         events: user.events,
-        friends: user.friends
+        friends: user.friends,
+        token: generateToken(user._id)
     })
 }
 

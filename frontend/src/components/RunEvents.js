@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
-import EventContext from '../context/events/EventContext';
+import { useSelector, useDispatch } from "react-redux";
 import { updateEvent, addComment, deleteComment } from "../context/events/EventActions"
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
@@ -15,8 +15,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    const { events, dispatch } = useContext(EventContext)
-    const { user } = useContext(UserContext)
+    // const { events } = useSelector((state) => state.events)
+    // const { user } = useContext(UserContext)
 
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
@@ -28,6 +28,8 @@ const RunEvents = ({ event, deleteEvent }) => {
         distance: null
     })
 
+    const dispatch = useDispatch();
+
 
 
     const onChange = e => setUpdateEventData({ ...updateEventData, [e.target.name]: e.target.value })
@@ -35,7 +37,7 @@ const RunEvents = ({ event, deleteEvent }) => {
     const handleOpen = (id) => {
         setOpen(true);
 
-        console.log(events)
+        // console.log(events)
     }
 
     const handleComment = e => setOpenComment(true)
@@ -43,72 +45,72 @@ const RunEvents = ({ event, deleteEvent }) => {
     const handleCommentClose = () => setOpenComment(false);
 
     const updatedEvent = async (id) => {
-        console.log(id)
-        if (!user)
-        {
-            alert("please log in first to continue")
-        } else
-        {
+        // console.log(id)
+        // if (!user)
+        // {
+        //     alert("please log in first to continue")
+        // } else
+        // {
 
-            const eventUpdateInfo = await updateEvent({
-                id: id,
-                user: user._id,
-                ...updateEventData,
-                creator: user.email
-            })
+        //     const eventUpdateInfo = await updateEvent({
+        //         id: id,
+        //         user: user._id,
+        //         ...updateEventData,
+        //         creator: user.email
+        //     })
 
-            if (eventUpdateInfo)
-            {
+        //     if (eventUpdateInfo)
+        //     {
 
-                dispatch({
-                    type: "UPDATE_EVENT",
-                    payload: eventUpdateInfo
-                })
+        //         dispatch({
+        //             type: "UPDATE_EVENT",
+        //             payload: eventUpdateInfo
+        //         })
 
-            }
+        //     }
 
-        }
+        // }
     }
 
     const addUserComment = async (id) => {
-        console.log(id)
-        if (!user)
-        {
-            alert("please log in first to continue")
+        // console.log(id)
+        // if (!user)
+        // {
+        //     alert("please log in first to continue")
 
-        } else
-        {
-            const eventComment = await addComment({
-                _id: id,
-                name: commentEmail,
-                comment: userComment
-            })
+        // } else
+        // {
+        //     const eventComment = await addComment({
+        //         _id: id,
+        //         name: commentEmail,
+        //         comment: userComment
+        //     })
 
-            dispatch({
-                type: "ADD_COMMENT",
-                payload: eventComment
-            })
-            handleCommentClose()
+        //     dispatch({
+        //         type: "ADD_COMMENT",
+        //         payload: eventComment
+        //     })
+        //     handleCommentClose()
 
-            window.location.reload()
-        }
+        //     window.location.reload()
+        // }
 
 
     }
 
     const eventDeleteComment = async (e, event, id) => {
-        console.log(event._id, id)
+        // console.log(event._id, id)
 
 
-        const commentInfo = await deleteComment({
-            event: event._id,
-            comment: id
-        })
+        // const commentInfo = await deleteComment({
+        //     event: event._id,
+        //     comment: id
+        // })
 
-        dispatch({
-            type: "DELETE_COMMENT",
-            payload: commentInfo
-        })
+        // dispatch({
+        //     type: "DELETE_COMMENT",
+        //     payload: commentInfo
+        // })
     }
 
     const { name, date, distance, _id, creator } = event
@@ -181,7 +183,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                                     <Stack spacing={2}>
                                         <h3>Let's add a comment</h3>
 
-                                        <TextField id="filled-basic" label="Email" value={user.email} variant="filled" name="email" onMouseEnter={(e) => setCommentEmail(e.target.value)} />
+                                        <TextField id="filled-basic" label="Email" variant="filled" name="email" onMouseEnter={(e) => setCommentEmail(e.target.value)} />
                                         <TextField id="filled-basic" label="Add Comment" variant="filled" name="comment" onChange={(e) => setUserComment(e.target.value)} />
                                         <Button onClick={() => addUserComment(_id)} variant="outlined">Add Comment</Button>
 
