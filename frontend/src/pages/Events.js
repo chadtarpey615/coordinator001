@@ -1,39 +1,25 @@
 import React, { useEffect, useContext } from 'react'
-import EventContext from '../context/events/EventContext'
-import { getEvents, removeEvent } from '../context/events/EventActions'
+import { getEvents } from "../features/events/eventSlice"
+import { useSelector, useDispatch } from "react-redux";
 import RunEvents from '../components/RunEvents'
 
 
 const Events = () => {
-    const { events, dispatch } = useContext(EventContext)
 
-    const getAllEvents = async () => {
 
-        const data = await getEvents()
-        console.log("event.js", data.events)
-        dispatch({
-            type: "GET_EVENTS",
-            payload: data
-        })
 
-    }
+    const dispatch = useDispatch();
+    const { events } = useSelector((state) => state.events)
 
     useEffect(() => {
 
 
-        getAllEvents()
+        dispatch(getEvents())
         console.log("", events)
-    }, [])
+    }, [dispatch])
 
     const deleteEvent = async (e, id) => {
 
-        removeEvent(id)
-        dispatch({
-            type: "DELETE_EVENT",
-            payload: id
-        })
-
-        getAllEvents()
         //temp fix but need to work reloading events with using the dom
         window.location.reload()
     }

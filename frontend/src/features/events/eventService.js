@@ -3,7 +3,11 @@ import axios from "axios"
 const API_URL = '/api/events/'
 
 
-const getEvents = async (events) => { }
+const getEvents = async (events) => {
+    const response = await axios.get(`${API_URL}/all-events`)
+    return response.data
+
+}
 
 
 const createEvent = async (event) => { }
