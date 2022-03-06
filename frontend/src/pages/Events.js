@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { getEvents } from "../features/events/eventSlice"
+import { getEvents, removeEvent } from "../features/events/eventSlice"
 import { useSelector, useDispatch } from "react-redux";
 import RunEvents from '../components/RunEvents'
 
@@ -16,7 +16,7 @@ const Events = () => {
 
 
     const deleteEvent = async (e, id) => {
-
+        dispatch(removeEvent(id))
         //temp fix but need to work reloading events with using the dom
         window.location.reload()
     }

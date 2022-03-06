@@ -24,7 +24,16 @@ const createEvent = async (event, token) => {
 
 const updateEvent = async (data) => { }
 
-const removeEvent = async (id) => { }
+const removeEvent = async (id) => {
+    try
+    {
+        const response = await axios.get(`${API_URL}/${id}`)
+        return response.data
+    } catch (error)
+    {
+
+    }
+}
 
 const addComment = async (data) => { }
 

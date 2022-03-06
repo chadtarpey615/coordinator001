@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from '../components/Card'
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import { useSelector, useDispatch } from "react-redux";
-import { updateEvent, addComment, deleteComment } from "../context/events/EventActions"
+
 import UserContext from '../context/users/UserContext';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
@@ -15,8 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const RunEvents = ({ event, deleteEvent }) => {
-    // const { events } = useSelector((state) => state.events)
-    // const { user } = useContext(UserContext)
+    const { user } = useSelector((state) => state.user)
 
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
@@ -26,6 +25,11 @@ const RunEvents = ({ event, deleteEvent }) => {
         name: "",
         date: "",
         distance: null
+    })
+
+    useEffect(() => {
+        console.log(user)
+        console.log(event)
     })
 
     const dispatch = useDispatch();
@@ -142,6 +146,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                 {event.comments.map((comment) => (
                     <div className="card">
                         <p>{comment.name} : {comment.comment}</p>
+
                         <DeleteIcon onClick={(e) => eventDeleteComment(e, event, comment._id)} />
                         <Divider />
                     </div>
@@ -149,7 +154,13 @@ const RunEvents = ({ event, deleteEvent }) => {
 
 
                 <div className="card-btn">
-                    <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
+                    {user._id === event.user ? (
+
+                        <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
+                    ) : (
+
+                            <button disabled onClick={(e) => deleteEvent(e, _id)}>Not Authorized to Delete</button>
+                        )}
 
                     <button onClick={(e) => handleOpen(_id)}>Update Event</button>
                     <button onClick={() => handleComment(_id)}>Add Comment</button>

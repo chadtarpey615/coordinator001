@@ -37,7 +37,14 @@ export const updateEvent = createAsyncThunk("events/all", async (eventId, thunkA
 })
 
 export const removeEvent = createAsyncThunk("events/all", async (eventId, thunkAPI) => {
+    try
+    {
+        const token = thunkAPI.getState().user.user.token
+        return await eventService.removeEvent(eventId, token)
+    } catch (error)
+    {
 
+    }
 })
 
 export const addComment = createAsyncThunk("events/all", async (data, thunkAPI) => {
