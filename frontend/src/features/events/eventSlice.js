@@ -55,12 +55,26 @@ export const removeEvent = createAsyncThunk("events/all", async (eventId, thunkA
     }
 })
 
-export const addComment = createAsyncThunk("events/all", async (data, thunkAPI) => {
+export const addComment = createAsyncThunk("events/comment", async (data, thunkAPI) => {
+    console.log(data)
+    try
+    {
+        return await eventService.addComment(data)
+    } catch (error)
+    {
+
+    }
 
 })
 
 export const deleteComment = createAsyncThunk("events/all", async (commentId, thunkAPI) => {
+    try
+    {
+        return await eventService.deleteComment(commentId)
+    } catch (error)
+    {
 
+    }
 })
 
 export const eventSlice = createSlice({

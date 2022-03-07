@@ -55,9 +55,37 @@ const removeEvent = async (id) => {
     }
 }
 
-const addComment = async (data) => { }
+const addComment = async (data) => {
+    console.log(data)
+    const comment = {
+        name: data.name,
+        comment: data.comment
 
-const deleteComment = async (id) => { }
+    }
+
+    try
+    {
+        const response = await axios.post(`${API_URL}/${data._id}`, comment)
+        return response.data
+    } catch (error)
+    {
+
+    }
+
+}
+
+const deleteComment = async (id) => {
+    const { event, comment } = id
+    console.log(event)
+    try
+    {
+        const response = await axios.get(`/api/events/${event}/${comment}`)
+        return response.data
+    } catch (error)
+    {
+
+    }
+}
 
 
 const eventService = {

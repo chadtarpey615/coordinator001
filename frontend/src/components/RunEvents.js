@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import { useSelector, useDispatch } from "react-redux";
-import { updateEvent } from "../features/events/eventSlice"
+import { updateEvent, addComment, deleteComment } from "../features/events/eventSlice"
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -70,44 +70,38 @@ const RunEvents = ({ event, deleteEvent }) => {
     }
 
     const addUserComment = async (id) => {
-        // console.log(id)
-        // if (!user)
-        // {
-        //     alert("please log in first to continue")
+        console.log(commentEmail)
+        if (!user)
+        {
+            alert("please log in first to continue")
 
-        // } else
-        // {
-        //     const eventComment = await addComment({
-        //         _id: id,
-        //         name: commentEmail,
-        //         comment: userComment
-        //     })
+        } else
+        {
+            const eventComment = {
+                _id: id,
+                name: commentEmail,
+                comment: userComment
+            }
 
-        //     dispatch({
-        //         type: "ADD_COMMENT",
-        //         payload: eventComment
-        //     })
-        //     handleCommentClose()
+            dispatch(addComment(eventComment))
+            handleCommentClose()
 
-        //     window.location.reload()
-        // }
+            // window.location.reload()
+        }
 
 
     }
 
     const eventDeleteComment = async (e, event, id) => {
-        // console.log(event._id, id)
+        console.log(event._id, id)
 
 
-        // const commentInfo = await deleteComment({
-        //     event: event._id,
-        //     comment: id
-        // })
+        const commentInfo = {
+            event: event._id,
+            comment: id
+        }
 
-        // dispatch({
-        //     type: "DELETE_COMMENT",
-        //     payload: commentInfo
-        // })
+        dispatch(deleteComment(commentInfo))
     }
 
     const { name, date, distance, _id, creator } = event
@@ -155,7 +149,14 @@ const RunEvents = ({ event, deleteEvent }) => {
                             <button disabled onClick={(e) => deleteEvent(e, _id)}>Not Authorized to Delete</button>
                         )}
 
-                    <button onClick={(e) => handleOpen(_id)}>Update Event</button>
+                    {user._id === event.user ? (
+
+                        <button onClick={(e) => handleOpen(_id)}>Update Event</button>
+                    ) : (
+
+                            <button disabled onClick={(e) => handleOpen(_id)}>Not Authorized to Update</button>
+                        )}
+
                     <button onClick={() => handleComment(_id)}>Add Comment</button>
 
                     {open ? (
@@ -187,7 +188,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                                     <Stack spacing={2}>
                                         <h3>Let's add a comment</h3>
 
-                                        <TextField id="filled-basic" label="Email" variant="filled" name="email" onMouseEnter={(e) => setCommentEmail(e.target.value)} />
+                                        <TextField id="filled-basic" label="Email" variant="filled" name="username" onChange={(e) => setCommentEmail(e.target.value)} />
                                         <TextField id="filled-basic" label="Add Comment" variant="filled" name="comment" onChange={(e) => setUserComment(e.target.value)} />
                                         <Button onClick={() => addUserComment(_id)} variant="outlined">Add Comment</Button>
 
