@@ -7,8 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "../styles/RunEvents.css"
 import { useSelector, useDispatch } from "react-redux";
-
-import UserContext from '../context/users/UserContext';
+import { updateEvent } from "../features/events/eventSlice"
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -27,10 +26,7 @@ const RunEvents = ({ event, deleteEvent }) => {
         distance: null
     })
 
-    useEffect(() => {
-        console.log(user)
-        console.log(event)
-    })
+
 
     const dispatch = useDispatch();
 
@@ -49,31 +45,28 @@ const RunEvents = ({ event, deleteEvent }) => {
     const handleCommentClose = () => setOpenComment(false);
 
     const updatedEvent = async (id) => {
-        // console.log(id)
-        // if (!user)
-        // {
-        //     alert("please log in first to continue")
-        // } else
-        // {
 
-        //     const eventUpdateInfo = await updateEvent({
-        //         id: id,
-        //         user: user._id,
-        //         ...updateEventData,
-        //         creator: user.email
-        //     })
+        if (!user)
+        {
+            alert("please log in first to continue")
+        } else
+        {
 
-        //     if (eventUpdateInfo)
-        //     {
+            const eventUpdateInfo = {
+                id: id,
+                user: user._id,
+                ...updateEventData,
+                creator: user.email
+            }
 
-        //         dispatch({
-        //             type: "UPDATE_EVENT",
-        //             payload: eventUpdateInfo
-        //         })
+            if (eventUpdateInfo)
+            {
 
-        //     }
+                dispatch(updateEvent(eventUpdateInfo))
 
-        // }
+            }
+
+        }
     }
 
     const addUserComment = async (id) => {

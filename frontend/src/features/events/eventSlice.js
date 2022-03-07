@@ -32,8 +32,16 @@ export const createEvent = createAsyncThunk("events/all", async (data, thunkAPI)
     }
 })
 
-export const updateEvent = createAsyncThunk("events/all", async (eventId, thunkAPI) => {
+export const updateEvent = createAsyncThunk("events/updateEvent", async (event, thunkAPI) => {
 
+    try
+    {
+        const token = thunkAPI.getState().user.user.token
+        return await eventService.updateEvent(event, token)
+    } catch (error)
+    {
+
+    }
 })
 
 export const removeEvent = createAsyncThunk("events/all", async (eventId, thunkAPI) => {
@@ -61,12 +69,28 @@ export const eventSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            .addCase(getEvents.pending, (state) => {
+                state.isLoading = true
+            })
             .addCase(getEvents.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.events = action.payload
             })
             .addCase(getEvents.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(updateEvent.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateEvent.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.events = action.payload
+            })
+            .addCase(updateEvent.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

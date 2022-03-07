@@ -47,7 +47,7 @@ exports.getAllEvents = async (req, res) => {
     // })
 
     const events = await Event.find({})
-    console.log(events)
+
     res.json(events)
 }
 

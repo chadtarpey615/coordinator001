@@ -22,7 +22,27 @@ const createEvent = async (event, token) => {
     return response.data
 }
 
-const updateEvent = async (data) => { }
+const updateEvent = async (data, token) => {
+    console.log("service", data)
+    const { user, name, date, distance, id } = data
+    const config = {
+        headers: {
+            Authoriztion: `Bearer ${token}`
+        }
+    }
+
+    const updatedEvent = {
+        id: id,
+        name: name,
+        date: date,
+        distance: distance,
+        creator: user
+
+    }
+
+    const response = await axios.put(`${API_URL}/all-events/${id}`, updatedEvent, config)
+    return response.data
+}
 
 const removeEvent = async (id) => {
     try

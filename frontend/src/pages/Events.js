@@ -10,7 +10,7 @@ const Events = () => {
     const dispatch = useDispatch();
 
     const { events } = useSelector((state) => state.events)
-    console.log("", events)
+
 
 
 
