@@ -101,7 +101,7 @@ const RunEvents = ({ event, deleteEvent }) => {
             comment: id
         }
 
-        dispatch(deleteComment(commentInfo))
+        await dispatch(deleteComment(commentInfo))
     }
 
     const { name, date, distance, _id, creator } = event

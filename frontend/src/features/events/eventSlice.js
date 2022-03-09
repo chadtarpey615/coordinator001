@@ -67,10 +67,11 @@ export const addComment = createAsyncThunk("events/comment", async (data, thunkA
 
 })
 
-export const deleteComment = createAsyncThunk("events/all", async (commentId, thunkAPI) => {
+export const deleteComment = createAsyncThunk("events/removeComment", async (commentInfo, thunkAPI) => {
+    const { event, comment } = commentInfo
     try
     {
-        return await eventService.deleteComment(commentId)
+        return await eventService.deleteComment(event, comment)
     } catch (error)
     {
 
@@ -108,6 +109,14 @@ export const eventSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+            })
+            .addCase(deleteComment.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteComment.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.comments = state.events.comments.filter(x => x.comments !== action.payload)
             })
     }
 })

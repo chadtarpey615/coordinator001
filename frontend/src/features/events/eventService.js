@@ -74,8 +74,7 @@ const addComment = async (data) => {
 
 }
 
-const deleteComment = async (id) => {
-    const { event, comment } = id
+const deleteComment = async (event, comment) => {
     console.log(event)
     try
     {
