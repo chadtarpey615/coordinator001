@@ -69,6 +69,7 @@ export const addComment = createAsyncThunk("events/comment", async (data, thunkA
 
 export const deleteComment = createAsyncThunk("events/removeComment", async (commentInfo, thunkAPI) => {
     const { event, comment } = commentInfo
+    console.log("eventSlice", event, comment)
     try
     {
         return await eventService.deleteComment(event, comment)

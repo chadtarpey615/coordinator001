@@ -75,7 +75,7 @@ const addComment = async (data) => {
 }
 
 const deleteComment = async (event, comment) => {
-    console.log(event)
+    console.log("eventService", event, comment)
     try
     {
         const response = await axios.get(`/api/events/${event}/${comment}`)

@@ -15,7 +15,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const RunEvents = ({ event, deleteEvent }) => {
     const { user } = useSelector((state) => state.user)
-
+    const { events } = useSelector((state) => state.events)
+    useEffect(() => {
+        console.log(events)
+    })
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
     const [userComment, setUserComment] = useState("")
@@ -93,15 +96,15 @@ const RunEvents = ({ event, deleteEvent }) => {
     }
 
     const eventDeleteComment = async (e, event, id) => {
-        console.log(event._id, id)
-
+        console.log("runEvents", event._id, id)
+        e.preventDefault()
 
         const commentInfo = {
             event: event._id,
             comment: id
         }
 
-        await dispatch(deleteComment(commentInfo))
+        dispatch(deleteComment(commentInfo))
     }
 
     const { name, date, distance, _id, creator } = event
@@ -130,6 +133,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h4>Created by: <span>{creator}</span></h4>
 
                 <h3>Comments</h3>
+
                 {event.comments.map((comment) => (
                     <div className="card">
                         <p>{comment.name} : {comment.comment}</p>
