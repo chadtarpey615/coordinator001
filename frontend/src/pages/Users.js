@@ -1,19 +1,19 @@
-import React, { useContext, useEffect } from 'react'
-import UserContext from "../context/users/UserContext"
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import Card from "../components/Card"
-import { allUsers, addNewFriend } from "../context/users/UserActions"
+import { allUsers, addNewFriend } from "../features/auth/authSlice"
 import PeopleIcon from '@mui/icons-material/People';
 import image from "../images/avatar.jpeg"
-const Users = () => {
-    const { user, users, dispatch } = useContext(UserContext)
 
+
+
+const Users = () => {
+    const { user, isLoading } = useSelector((state) => state.user)
+    const dispatch = useDispatch();
     const getAllUsers = async () => {
 
-        const usersData = await allUsers()
-        dispatch({
-            type: "ALL_USERS",
-            payload: usersData
-        })
+        // const usersData = await allUsers()
+        dispatch(allUsers())
     }
 
     const addFriend = (friend, data) => {

@@ -43,6 +43,26 @@ export const logout = createAsyncThunk("user/logout", async () => {
     await authService.logout()
 })
 
+export const allUsers = createAsyncThunk("user/allFriends", async () => {
+    try
+    {
+        return await authService.allUsers()
+    } catch (error)
+    {
+
+    }
+})
+
+export const allNewFriend = createAsyncThunk("user/newFriends", async () => {
+    // try
+    // {
+    //     return await authService.addNewFriend()
+    // } catch (error)
+    // {
+
+    // }
+})
+
 export const userAuthSlice = createSlice({
     name: 'user',
     initialState,

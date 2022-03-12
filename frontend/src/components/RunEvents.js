@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Card from '../components/Card'
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
@@ -16,9 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const RunEvents = ({ event, deleteEvent }) => {
     const { user } = useSelector((state) => state.user)
     const { events } = useSelector((state) => state.events)
-    useEffect(() => {
-        console.log(events)
-    })
+
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)
     const [userComment, setUserComment] = useState("")
@@ -105,6 +103,7 @@ const RunEvents = ({ event, deleteEvent }) => {
         }
 
         dispatch(deleteComment(commentInfo))
+        window.location.reload()
     }
 
     const { name, date, distance, _id, creator } = event
