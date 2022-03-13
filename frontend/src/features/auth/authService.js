@@ -46,7 +46,9 @@ const addNewFriend = async (friend, data) => {
 }
 
 const getUserFriends = async (id) => {
-
+    const response = await axios.get(`/api/users/${id}`)
+    console.log(response.data)
+    return response.data
 }
 
 const authService = {

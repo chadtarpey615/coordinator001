@@ -6,6 +6,7 @@ const user = JSON.parse(localStorage.getItem("user"))
 const initialState = {
     user: user ? user : null,
     users: [],
+    friends: [],
     userError: false,
     userSuccess: false,
     isLoading: false,
@@ -44,7 +45,7 @@ export const logout = createAsyncThunk("user/logout", async () => {
     await authService.logout()
 })
 
-export const allUsers = createAsyncThunk("user/allFriends", async () => {
+export const allUsers = createAsyncThunk("user/allUsers", async () => {
     try
     {
         return await authService.allUsers()
@@ -59,6 +60,17 @@ export const addNewFriend = createAsyncThunk("user/newFriends", async ({ friend,
     try
     {
         return await authService.addNewFriend(friend, data)
+    } catch (error)
+    {
+
+    }
+})
+
+export const getUserFriends = createAsyncThunk("user/allFriends", async (data, thunkAPI) => {
+    console.log("data", data)
+    try
+    {
+        return await authService.getUserFriends(data)
     } catch (error)
     {
 
@@ -113,6 +125,20 @@ export const userAuthSlice = createSlice({
                 state.users = action.payload
             })
             .addCase(allUsers.rejected, (state, action) => {
+                state.isLoading = false
+                state.userError = true
+                state.userMessage = action.payload
+
+            })
+            .addCase(getUserFriends.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getUserFriends.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.userSuccess = true
+                state.friends = action.payload
+            })
+            .addCase(getUserFriends.rejected, (state, action) => {
                 state.isLoading = false
                 state.userError = true
                 state.userMessage = action.payload

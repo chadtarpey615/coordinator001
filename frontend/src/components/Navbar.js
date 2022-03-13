@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import UserContext from '../context/users/UserContext';
+
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
-import { getUserFriends } from "../context/users/UserActions"
-import { logout } from "../features/auth/authSlice"
+import { logout, getUserFriends } from "../features/auth/authSlice"
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -13,14 +12,14 @@ import Box from '@mui/material/Box';
 
 const Navbar = () => {
     // const { user, friends } = useContext(UserContext)
-    const { user } = useSelector((state) => state.user)
-    useEffect(() => {
-        console.log(user)
-    })
+    const { user, users, friends } = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
     const history = useNavigate()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(getUserFriends(user._id))
+    }, [])
 
 
 
@@ -89,7 +88,7 @@ const Navbar = () => {
                                 </ul>
                             )}
 
-                        {/* {user.friends ? (
+                        {user.friends ? (
                             <>
                                 <li onClick={handleOpen} className="nav-link active text-white" aria-current="page" >Friends</li>
                                 <Modal
@@ -113,7 +112,7 @@ const Navbar = () => {
                         ) : (
                                 <p></p>
 
-                            )} */}
+                            )}
 
 
                     </div>
