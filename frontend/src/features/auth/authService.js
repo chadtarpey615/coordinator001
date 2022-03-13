@@ -32,7 +32,17 @@ const allUsers = async () => {
 }
 
 const addNewFriend = async (friend, data) => {
+    console.log("friend", friend, data._id)
 
+    try
+    {
+        const response = axios.post(`/api/users/${friend._id}/${data._id}`)
+
+        return response.data
+    } catch (error)
+    {
+
+    }
 }
 
 const getUserFriends = async (id) => {

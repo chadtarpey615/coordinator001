@@ -5,6 +5,7 @@ import authService from "./authService"
 const user = JSON.parse(localStorage.getItem("user"))
 const initialState = {
     user: user ? user : null,
+    users: [],
     userError: false,
     userSuccess: false,
     isLoading: false,
@@ -53,14 +54,15 @@ export const allUsers = createAsyncThunk("user/allFriends", async () => {
     }
 })
 
-export const allNewFriend = createAsyncThunk("user/newFriends", async () => {
-    // try
-    // {
-    //     return await authService.addNewFriend()
-    // } catch (error)
-    // {
+export const addNewFriend = createAsyncThunk("user/newFriends", async ({ friend, data }, thunkAPI) => {
+    console.log("data", data, "friend", friend)
+    try
+    {
+        return await authService.addNewFriend(friend, data)
+    } catch (error)
+    {
 
-    // }
+    }
 })
 
 export const userAuthSlice = createSlice({
@@ -101,6 +103,20 @@ export const userAuthSlice = createSlice({
             })
             .addCase(logout.fulfilled, (state) => {
                 state.user = null
+            })
+            .addCase(allUsers.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(allUsers.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.userSuccess = true
+                state.users = action.payload
+            })
+            .addCase(allUsers.rejected, (state, action) => {
+                state.isLoading = false
+                state.userError = true
+                state.userMessage = action.payload
+
             })
     }
 })

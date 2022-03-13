@@ -4,27 +4,30 @@ import Card from "../components/Card"
 import { allUsers, addNewFriend } from "../features/auth/authSlice"
 import PeopleIcon from '@mui/icons-material/People';
 import image from "../images/avatar.jpeg"
+import Spinner from '../components/Spinner';
 
 
 
 const Users = () => {
-    const { user, isLoading } = useSelector((state) => state.user)
+    const { user, users, isLoading } = useSelector((state) => state.user)
     const dispatch = useDispatch();
+
     const getAllUsers = async () => {
 
-        // const usersData = await allUsers()
-        dispatch(allUsers())
+        await dispatch(allUsers())
+
     }
 
-    const addFriend = (friend, data) => {
-        addNewFriend(friend._id, data)
+    const addFriend = async (friend, data) => {
+        console.log("Data", data)
+        await dispatch(addNewFriend({ friend, data }))
     }
 
     useEffect(() => {
         getAllUsers()
-        console.log(users)
 
     }, [])
+    if (isLoading) { return <Spinner /> }
     return (
         <div>
             <div className="row">
@@ -43,10 +46,15 @@ const Users = () => {
                                     <img
                                         src={image}
                                         class="rounded-circle shadow-4"
-                                        style={{ width: "150px" }}
+                                        style={{ width: "100px" }}
                                         alt="Avatar"
                                     />
-                                    <h1 className="mx-5 my-5">{data.username}</h1>
+                                    {user.username === data.username ? (
+                                        <h1 className="mx-5 my-5">{data.username}:Your Account</h1>
+                                    ) : (
+                                            <h1 className="mx-5 my-5">{data.username}</h1>
+                                        )}
+
                                 </div>
                             </div>
                             <p>Has Events: {data.events.length}</p>
