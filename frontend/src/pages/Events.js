@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import { getEvents, removeEvent } from "../features/events/eventSlice"
 import { useSelector, useDispatch } from "react-redux";
 import RunEvents from '../components/RunEvents'

@@ -1,16 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import UserContext from "../context/users/UserContext"
-// import { register, login } from "../context/users/UserActions"
 import { register } from "../features/auth/authSlice"
 import { useSelector, useDispatch } from "react-redux";
 
 const SignUp = () => {
-    // const { dispatch } = useContext(UserContext)
     const [loginData, setLoginData] = useState({
         username: "",
         email: "",
@@ -31,7 +28,6 @@ const SignUp = () => {
     const onSubmit = async e => {
         e.preventDefault()
 
-        // dispatch({ type: "SIGNUP_USER" })
         console.log("hiiit")
         if (password !== password2)
         {
@@ -63,23 +59,19 @@ const SignUp = () => {
                         <div className="mb-3">
                             <label className="form-label text-light">User Name</label>
                             <TextField fullWidth id="filled-basic" label="User Name" variant="filled" name="username" onChange={e => onChange(e)} />
-                            {/* <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value={username} onChange={e => onChange(e)} /> */}
                         </div>
                         <div className="mb-3">
                             <label className="form-label text-light">Email address</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
-                            {/* <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value={email} onChange={e => onChange(e)} /> */}
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
                             <label className="form-label text-light">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
-                            {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={password} onChange={e => onChange(e)} /> */}
                         </div>
                         <div className="mb-3">
                             <label className="form-label text-light">Confirm Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password2" onChange={e => onChange(e)} />
-                            {/* <input type="password" className="form-control" id="exampleInputPassword1" name="password2" value={password2} onChange={e => onChange(e)} /> */}
                         </div>
 
                         <Link className="my-3" to="/login" >Have an account? Log In here </Link>

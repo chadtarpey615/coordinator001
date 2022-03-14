@@ -37,8 +37,6 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const handleOpen = (id) => {
         setOpen(true);
-
-        // console.log(events)
     }
 
     const handleComment = e => setOpenComment(true)
@@ -64,9 +62,7 @@ const RunEvents = ({ event, deleteEvent }) => {
             {
 
                 dispatch(updateEvent(eventUpdateInfo))
-
             }
-
         }
     }
 

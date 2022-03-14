@@ -6,7 +6,6 @@ import "../styles/calendar.css"
 import { createEvent, getEvents } from "../features/events/eventSlice"
 import { useSelector, useDispatch } from "react-redux";
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import Spinner from "../components/Spinner"
 
 
@@ -51,11 +50,6 @@ const Calendars = () => {
             }
 
             dispatch(createEvent(eventInfo))
-
-            // dispatch({
-            //     type: "CREATE_EVENT",
-            //     payload: eventInfo
-            // })
         }
 
 
@@ -81,20 +75,17 @@ const Calendars = () => {
                         <label htmlFor="name" > </label>
                         <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
 
-                        {/* <input type="text" placeholder="Add Event Name" name="name" onChange={e => onChange(e)} /> */}
 
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
                         <TextField id="filled-basic" label={`${selectDay}`} name="date" variant="filled" onMouseEnter={e => setSelectDay(selectDay)} />
-                        {/* <input type="text" placeholder={`${selectDay}`} name="date" onMouseEnter={e => setSelectDay(selectDay)} /> */}
 
                     </div>
                     <div >
                         <label htmlFor="distance" > </label>
                         <TextField id="filled-basic" label="Add Event Total Distance " name="distance" variant="filled" onChange={e => onChange(e)} />
 
-                        {/* <input type="text" placeholder="Add Event Total Distance" name="distance" onChange={e => onChange(e)} /> */}
 
                     </div>
                     <div >
