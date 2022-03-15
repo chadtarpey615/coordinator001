@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import Container from '@mui/material/Container';
@@ -13,7 +14,7 @@ import Users from "./pages/Users";
 function App() {
   return (
 
-    <Container maxWidth="xxl">
+    <div className="container-fluid">
       <Router>
         <Navbar />
 
@@ -27,7 +28,7 @@ function App() {
         </Routes>
       </Router>
       <ToastContainer />
-    </Container>
+    </div>
 
   );
 }

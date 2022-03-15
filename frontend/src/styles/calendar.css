@@ -15,6 +15,10 @@
     border: 2px solid rgb(92, 86, 86);
 }
 
+.run-form {
+    margin-top: 10px;
+}
+
 .run-form input {
     margin: auto;
     width: 30vw;
@@ -23,7 +27,7 @@
 }
 .run-form button {
     margin-top: 12px;
-    width: 20vw;
+    width: 30vw;
     height: 5vh;
     border-radius: 10px;
 }
@@ -53,7 +57,7 @@ a {
     background: black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
-
+/* 
 @media (max-width: 767px) {
     .DayPicker-Month {
         width: 80vw;
@@ -63,3 +67,86 @@ a {
         width: 50vw;
     }
 }
+
+@media (min-width: 850px) {
+    .DayPicker-Month {
+        margin-left: 90px;
+        width: 80vw;
+    }
+
+    .run-form {
+        padding-bottom: auto;
+        margin-left: 30px;
+    }
+
+    .run-form input {
+        width: 70vw;
+    }
+
+    .run-form button {
+        margin-top: 25px;
+    }
+
+    .run-form h1 {
+        margin-left: auto;
+    }
+
+    .event-input {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 540px) {
+    .DayPicker-Month {
+        margin-left: 50px;
+        width: 70vw;
+    }
+
+    .run-form {
+        padding-bottom: auto;
+        margin-left: 30px;
+    }
+
+    .run-form input {
+        width: 70vw;
+    }
+
+    .run-form button {
+        margin-top: 25px;
+    }
+
+    .run-form h1 {
+        margin-left: auto;
+    }
+
+    .event-input {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 415px) {
+    .DayPicker-Month {
+        width: 70vw;
+    }
+
+    .run-form {
+        margin-top: auto;
+        margin-left: 30px;
+    }
+
+    .run-form input {
+        width: 50vw;
+    }
+
+    .run-form button {
+        margin-top: 25px;
+    }
+
+    .run-form h1 {
+        margin-left: auto;
+    }
+
+    .event-input {
+        margin-top: 20px;
+    }
+} */

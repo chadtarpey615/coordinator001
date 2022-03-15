@@ -16,7 +16,7 @@ const Home = () => {
 
                     </div>
                     <div className="row">
-                        <div className="col-md-10">
+                        <div className="col-md-12">
                             <div className="d-flex flex-row-reverse py-5">
                                 <Animated animationIn="fadeInLeft">
                                     <p className="mx-5">

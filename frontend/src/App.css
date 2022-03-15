@@ -4,6 +4,9 @@
 
 body {
     background: linear-gradient(to right, #072f5f, #1261a0);
+    object-fit: contain;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .App-logo {

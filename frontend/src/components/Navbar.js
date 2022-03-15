@@ -16,9 +16,18 @@ const Navbar = () => {
     const history = useNavigate()
     const dispatch = useDispatch()
 
+
+
+
     useEffect(() => {
-        dispatch(getUserFriends(user._id))
+        if (user)
+        {
+
+            dispatch(getUserFriends(user._id))
+        }
+        console.log(user)
     }, [])
+
 
 
 
@@ -31,7 +40,7 @@ const Navbar = () => {
 
     const style = {
         position: 'absolute',
-        top: '11%',
+        top: '18%',
         left: '93%',
         transform: 'translate(-50%, -50%)',
         width: 150,
@@ -66,6 +75,12 @@ const Navbar = () => {
                         </ul>
 
 
+
+
+
+
+
+
                         {user ? (
                             <ul className="navbar-nav ">
                                 <li className="nav-item">
@@ -87,7 +102,7 @@ const Navbar = () => {
                                 </ul>
                             )}
 
-                        {user.friends ? (
+                        {user ? (
                             <>
                                 <li onClick={handleOpen} className="nav-link active text-white" aria-current="page" >Friends</li>
                                 <Modal
@@ -101,6 +116,7 @@ const Navbar = () => {
 
 
                                             {friends.map((friend) => (
+
                                                 <h6>{friend}</h6>
                                             ))}
 
@@ -109,12 +125,13 @@ const Navbar = () => {
                                 </Modal>
                             </>
                         ) : (
-                                <p></p>
+                                <p>User has no friends</p>
 
                             )}
 
 
                     </div>
+
                 </div>
             </nav>
         </>
