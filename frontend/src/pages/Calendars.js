@@ -57,47 +57,52 @@ const Calendars = () => {
 
     if (isLoading) { return <Spinner /> }
     return (
+        <>
+            <div className="row align-items-start">
 
-        <div className="row align-items-start">
 
-
-            <div className="col-lg-6 col-sm-12 my-5 ">
-                <h1 className="mx-5 text-light">Run Fit</h1>
-                <DayPicker onDayClick={(e) => setSelectDay(e)} />
+                <div className="col-lg-6 col-sm-12 my-5 ">
+                    <h1 className="mx-5 text-light">Run Fit</h1>
+                </div>
             </div>
+            <div className="row align-items-start">
+                <div className="col-md-6 col-sm-12  d-flex justify-content-center">
 
-            <div className="col-lg-6 d-flex justify-content-center col-sm-6 ">
+                    <DayPicker onDayClick={(e) => setSelectDay(e)} />
+                </div>
+                <div className="col-md-6 col-sm-12 d-flex justify-content-center ">
 
-                <form className="run-form" onSubmit={enterEventHandler}>
-                    <h1 className="text-light">Add run event form </h1>
+                    <form className="run-form" onSubmit={enterEventHandler}>
+                        <h1 className="text-light">Add run event form </h1>
 
-                    <div className="event-input">
-                        <label htmlFor="name" > </label>
-                        <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
-
-
-                    </div>
-                    <div >
-                        <label htmlFor="date" > </label>
-                        <TextField id="filled-basic" label={`${selectDay}`} name="date" variant="filled" onMouseEnter={e => setSelectDay(selectDay)} />
-
-                    </div>
-                    <div >
-                        <label htmlFor="distance" > </label>
-                        <TextField id="filled-basic" label="Add Event Total Distance " name="distance" variant="filled" onChange={e => onChange(e)} />
+                        <div className="event-input">
+                            <label htmlFor="name" > </label>
+                            <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
 
 
-                    </div>
-                    <div >
+                        </div>
+                        <div >
+                            <label htmlFor="date" > </label>
+                            <TextField id="filled-basic" label={`${selectDay}`} name="date" variant="filled" onMouseEnter={e => setSelectDay(selectDay)} />
 
-                        <button>Enter Event</button>
-                        <button><Link to="events">See All Events</Link> </button>
+                        </div>
+                        <div >
+                            <label htmlFor="distance" > </label>
+                            <TextField id="filled-basic" label="Add Event Total Distance " name="distance" variant="filled" onChange={e => onChange(e)} />
 
 
-                    </div>
-                </form>
+                        </div>
+                        <div >
+
+                            <button>Enter Event</button>
+                            <button><Link to="events">See All Events</Link> </button>
+
+                        </div>
+                    </form>
+                </div>
+
             </div>
-        </div>
+        </>
     );
 };
 

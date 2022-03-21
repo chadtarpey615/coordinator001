@@ -33,8 +33,8 @@ const Home = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-md-12">
-                            <div className="d-flex justify-content-end home-btns">
+                        <div className="col-md-12 ">
+                            <div className="d-flex justify-content-center home-btns">
 
                                 <Animated animationIn="fadeInDown">
 
@@ -50,7 +50,7 @@ const Home = () => {
 
 
 
-                <div className="col-md-6">
+                <div className="col-md-6 col-sm-8">
                     <div className="d-flex justify-content-center py-5 my-5">
                         <Animated animationIn="fadeInRight">
 

@@ -57,7 +57,7 @@ a {
     background: black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
-/* 
+
 @media (max-width: 767px) {
     .DayPicker-Month {
         width: 80vw;
@@ -68,6 +68,16 @@ a {
     }
 }
 
+@media (max-width: 500px) {
+    .DayPicker-Month {
+        width: 75vw;
+    }
+
+    .run-form input {
+        width: 50vw;
+    }
+}
+/* 
 @media (min-width: 850px) {
     .DayPicker-Month {
         margin-left: 90px;

@@ -5,12 +5,13 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { logout, getUserFriends } from "../features/auth/authSlice"
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Stack from '@mui/material/Stack';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 
-const Navbar = () => {
+const Navbars = () => {
     const { user, users, friends } = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
     const history = useNavigate()
@@ -52,13 +53,11 @@ const Navbar = () => {
 
     return (
         <>
-            <nav nav className="navbar navbar-expand-md navbar-light bg-dark" >
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
                 <div className="container-fluid">
                     <Link className="navbar-brand text-white" to="/signup">Run-Fit</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link active text-white" aria-current="page" to="/">Home</Link>
@@ -130,15 +129,18 @@ const Navbar = () => {
                             )}
 
 
-                    </div>
+                    </Navbar.Collapse>
 
                 </div>
-            </nav>
+            </Navbar>
+
+
+
         </>
     )
 }
 
-export default Navbar
+export default Navbars
 
 
 

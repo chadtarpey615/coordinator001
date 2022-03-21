@@ -38,7 +38,7 @@ const Users = () => {
             </div>
             <div className="row">
                 {users ? users.map((data) => (
-                    <div className="col-md-4">
+                    <div className="col-md-4 col-sm-6 my-2">
 
                         <Card>
                             <div className="row">
