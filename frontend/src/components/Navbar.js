@@ -53,32 +53,26 @@ const Navbars = () => {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+            <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" fixed="top" className="py-1">
                 <div className="container-fluid">
                     <Link className="navbar-brand text-white" to="/signup">Run-Fit</Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <Navbar.Collapse id="responsive-navbar-nav" >
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 " >
                             <li className="nav-item">
                                 <Link className="nav-link active text-white" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white" to="/users">Users</Link>
+                            <li className="nav-item" onToggle >
+                                <Link className="nav-link text-white" to="/users" >Users</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white" to="/calendar">Calendar</Link>
+                                <Link className="nav-link text-white" to="/calendar"  >Calendar</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link text-white" to="/events">All Events</Link>
                             </li>
                         </ul>
-
-
-
-
-
-
-
+                        <NavDropdown.Divider bg="light" variant="light" />
 
                         {user ? (
                             <ul className="navbar-nav ">
@@ -133,8 +127,6 @@ const Navbars = () => {
 
                 </div>
             </Navbar>
-
-
 
         </>
     )
