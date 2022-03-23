@@ -50,7 +50,7 @@ const Home = () => {
 
 
 
-                <div className="col-md-6 col-sm-12">
+                <div className="col-md-6 col-xs-12">
                     <div className="d-flex justify-content-center py-5 my-5">
                         <Animated animationIn="fadeInRight">
 
