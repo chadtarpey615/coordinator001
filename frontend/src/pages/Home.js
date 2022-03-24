@@ -5,17 +5,17 @@ import runnerImg from "../images/istockphoto.jpeg"
 const Home = () => {
     return (
         <>
-            <div className="row align-items-md-center align-items-lg-end">
+            <div className="row  align-items-md-center align-items-lg-end">
                 <div className="col-md-6">
                     <div className="d-flex justify-content-center py-5 my-2">
                         <Animated animationIn="rubberBand">
 
-                            <h1 className="display-2 text-white">Welcome to Run Fit</h1>
+                            <h1 className="display-md-2 display-sm-4 text-white my-md-3">Welcome to Run Fit</h1>
                         </Animated>
 
 
                     </div>
-                    <div className="row">
+                    <div className="row ">
                         <div className="col-md-12">
                             <div className="d-flex flex-row-reverse py-5">
                                 <Animated animationIn="fadeInLeft">
@@ -32,9 +32,9 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="row">
+                    <div className="row ">
                         <div className="col-md-12 ">
-                            <div className="d-flex justify-content-center home-btns">
+                            <div className="d-flex justify-content-center home-btns ">
 
                                 <Animated animationIn="fadeInDown">
 

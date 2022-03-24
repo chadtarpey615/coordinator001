@@ -40,7 +40,7 @@ const Users = () => {
                 {users ? users.map((data) => (
                     <div className="col-md-4 col-sm-6 my-2">
 
-                        <Card>
+                        <Card >
                             <div className="row">
                                 <div className="col-6-md d-flex justify-space-between">
                                     <img

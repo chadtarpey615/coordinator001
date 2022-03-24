@@ -45,7 +45,7 @@ const Navbars = () => {
         left: '93%',
         transform: 'translate(-50%, -50%)',
         width: 150,
-        bgcolor: 'background.paper',
+        bgcolor: 'rgb(0,39,150)',
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
@@ -108,9 +108,12 @@ const Navbars = () => {
                                         <Stack spacing={2}>
 
 
+                                            <p className="text-info">Friends</p>
+                                            <hr />
                                             {friends.map((friend) => (
 
-                                                <h6>{friend}</h6>
+                                                <h6 className="text-white">{friend}</h6>
+
                                             ))}
 
                                         </Stack>
