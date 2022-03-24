@@ -11,6 +11,7 @@ import "./App.css"
 import Events from "./pages/Events"
 import Home from "./pages/Home"
 import Users from "./pages/Users";
+import Footer from "./components/Footer"
 function App() {
   return (
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/events" element={<Events />} />
         </Routes>
       </Router>
+      <Footer />
       <ToastContainer />
     </div>
 
