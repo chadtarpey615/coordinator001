@@ -27,6 +27,7 @@
 }
 .run-form button {
     margin-top: 12px;
+    margin-right: 10px;
     width: 30vw;
     height: 5vh;
     border-radius: 10px;
@@ -43,10 +44,6 @@
 a {
     text-decoration: none;
     color: white;
-}
-
-.event-input {
-    margin-top: 6rem;
 }
 
 .DayPickerInput-Overlay {

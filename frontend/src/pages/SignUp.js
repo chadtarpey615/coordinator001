@@ -47,7 +47,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <h1 className="d-flex justify-content-center mt-5 text-light">Sign up </h1>
+            <h1 className="d-flex justify-content-center mt-5 py-5 text-light">Sign up </h1>
             <form onSubmit={e => onSubmit(e)}>
                 <Grid
                     container

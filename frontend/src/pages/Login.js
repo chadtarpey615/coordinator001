@@ -45,8 +45,8 @@ const Login = () => {
     if (isLoading) { return <Spinner /> }
 
     return (
-        <div>
-            <h1 className="d-flex justify-content-center mt-5 text-light">Log In </h1>
+        <div >
+            <h1 className="d-flex justify-content-center mt-5 pt-5  text-white">Log In </h1>
             <form onSubmit={e => onSubmit(e)}>
                 <Grid
                     container

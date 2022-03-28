@@ -75,7 +75,7 @@ const Calendars = () => {
                     <form className="run-form" onSubmit={enterEventHandler}>
                         <h1 className="text-light">Add run event form </h1>
 
-                        <div className="event-input">
+                        <div className=" mt-md-5 mt-sm-4">
                             <label htmlFor="name" > </label>
                             <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
 
@@ -92,7 +92,7 @@ const Calendars = () => {
 
 
                         </div>
-                        <div >
+                        <div className="mt-2">
 
                             <button>Enter Event</button>
                             <button><Link to="events">See All Events</Link> </button>
