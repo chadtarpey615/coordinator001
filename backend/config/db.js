@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // const db = config.get("mongoURI")
 
 const connectDB = async () => {
-    console.log("herrrrre", process.env)
+    console.log("herrrrre", process.env.MONGO_URI)
     try
     {
         const conn = await mongoose.connect(process.env.MONGO_URI)
@@ -16,4 +16,4 @@ const connectDB = async () => {
     }
 }
 
-module.exports = connectDB
+module.exports = connectDB 
