@@ -22,16 +22,25 @@ app.get('/', (req, res) => {
 app.use("/api/users", require("./routes/api/users"))
 app.use("/api/events", require("./routes/api/events"))
 
-// serve static a in production
-// if (process.env.NODE_ENV === "production")
-// {
-//     // set static folder
-//     app.use(express.static("client/build"))
 
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-//     })
-// }
+// serve frontend 
+
+
+// serve static a in production
+if (process.env.NODE_ENV === "production")
+{
+    // set build folder as static
+    app.use(express.static(path.join(__dirname, "../frontend/build")))
+
+    app.get("*", (req, res) => (
+        res.sendFile(__dirname, '../', 'frontend', 'build', 'index.html')
+    ))
+} else
+{
+    app.get("/", (req, res) => {
+        res.status(200).json({ message: "Welcome to Run Fit" })
+    })
+}
 // start the server
 // app.listen(() => {
 //     console.log(`App listening on port ${PORT}`)
