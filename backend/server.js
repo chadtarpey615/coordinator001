@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config()
 const app = express();
 const path = require("path");
 // const userRoutes = require("./routes/api/users")
-// const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || "3001"
 
 
 // connect to database
@@ -45,4 +45,4 @@ if (process.env.NODE_ENV === "production")
 // app.listen(() => {
 //     console.log(`App listening on port ${PORT}`)
 // })
-app.listen(process.env.PORT || 3001, () => console.log(`Server running on port ${PORT}!`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}!`));
