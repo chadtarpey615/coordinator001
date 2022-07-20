@@ -122,7 +122,7 @@ const RunEvents = ({ event, deleteEvent }) => {
 
             <Card>
                 <DirectionsRunIcon />
-                <h1>Event Title: <span>{name}</span></h1>
+                <h1 class="italic">Event Title: <span>{name}</span></h1>
                 <h4>Date: <span>{date}</span></h4>
                 <h4>Distance: <span>{distance}</span></h4>
                 <h4>Created by: <span>{creator}</span></h4>

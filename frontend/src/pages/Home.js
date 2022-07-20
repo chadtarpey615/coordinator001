@@ -34,7 +34,7 @@ const Home = () => {
 
                     <div className="row ">
                         <div className="col-md-12 ">
-                            <div className="d-flex justify-content-center home-btns ">
+                            <div className="d-flex justify-content-center home-btns divide-y divide-gray-200 ">
 
                                 <Animated animationIn="fadeInDown">
 
