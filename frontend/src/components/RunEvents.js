@@ -120,7 +120,7 @@ const RunEvents = ({ event, deleteEvent }) => {
 
         <>
 
-            <Card class="mt-10">
+            <Card>
                 <DirectionsRunIcon />
                 <h1 class="italic">Event Title: <span>{name}</span></h1>
                 <h4>Date: <span>{date}</span></h4>

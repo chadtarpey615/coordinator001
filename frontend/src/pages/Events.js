@@ -29,7 +29,7 @@ const Events = () => {
 
 
 
-            <div className="card-container">
+            <div className="card-container mt-16">
 
                 {
                     events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />))
