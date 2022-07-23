@@ -47,7 +47,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <h1 className="d-flex justify-content-center mt-5 py-5 text-light">Sign up </h1>
+            <h1 className="d-flex justify-content-center mt-5 py-5 text-white">Sign up </h1>
             <form onSubmit={e => onSubmit(e)}>
                 <Grid
                     container
@@ -57,24 +57,24 @@ const SignUp = () => {
                 >
                     <Stack>
                         <div className="mb-3">
-                            <label className="form-label text-light">User Name</label>
+                            <label className="form-label text-white">User Name</label>
                             <TextField fullWidth id="filled-basic" label="User Name" variant="filled" name="username" onChange={e => onChange(e)} />
                         </div>
                         <div className="mb-3">
-                            <label className="form-label text-light">Email address</label>
+                            <label className="form-label text-white">Email address</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" className=" mt-4 form-text text-white">We'll never share your email with anyone else.</div>
                         </div>
                         <div className="mb-3">
-                            <label className="form-label text-light">Password</label>
+                            <label className="form-label text-white">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
                         </div>
                         <div className="mb-3">
-                            <label className="form-label text-light">Confirm Password</label>
+                            <label className="form-label text-white">Confirm Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password2" onChange={e => onChange(e)} />
                         </div>
 
-                        <Link className="my-3" to="/login" >Have an account? Log In here </Link>
+                        <Link className="my-3 text-white" to="/login" >Have an account? Log In here </Link>
 
                         <Button variant="contained" size="large" type="submit" className="btn btn-primary">Submit</Button>
                     </Stack>

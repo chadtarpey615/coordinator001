@@ -54,28 +54,58 @@ const Navbars = () => {
     return (
         <>
 
-            <div className="flex flex-row items-center">
-                <div>
-                    <li className="mx-2">
+            <div className="bg-base-100 flex flex-row h-12  items-center">
+                <ul className="justify-items-start">
+                    <li className=" mx-2">
                         <Link className=" text-white" aria-current="page" to="/">Home</Link>
                     </li>
-                </div>
+                </ul>
 
-                <div>
+                <ul>
                     <li className="mx-2" onToggle >
                         <Link className="text-white" to="/users" >Users</Link>
                     </li>
-                </div>
-                <div>
+                </ul>
+                <ul>
                     <li className="mx-2">
                         <Link className="text-white" to="/calendar"  >Calendar</Link>
                     </li>
-                </div>
-                <div>
+                </ul>
+                <ul>
                     <li className="mx-2">
                         <Link className="text-white" to="/events">All Events</Link>
                     </li>
-                </div>
+                </ul>
+
+                {user ? (
+                    <div className="flex justify-end">
+                        <ul>
+
+                            <li className="text-white" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
+
+                        </ul>
+                        <ul>
+                            <li className="mx-2">
+                                <Link onClick={userLogout} className="text-white" aria-current="page" to="/login">Log Out</Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                ) : (
+                        <>
+                            <ul className="">
+                                <li className="mx-2">
+                                    <Link className="text-white" aria-current="page" to="/signup">Sign Up</Link>
+                                </li>
+
+                            </ul>
+                            <ul>
+                                <li className="mx-2">
+                                    <Link className="text-white" aria-current="page" to="/login">Sign In</Link>
+                                </li>
+                            </ul>
+                        </>
+                    )}
             </div>
             {/* <nav>
                 <div className="flex flex-row bg-slate-700 h-12 items-center">

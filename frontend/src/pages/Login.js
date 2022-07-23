@@ -46,7 +46,7 @@ const Login = () => {
 
     return (
         <div >
-            <h1 className="d-flex justify-content-center mt-5 pt-5  text-white">Log In </h1>
+            <h1 className="flex justify-center mt-5 pt-5 text-4xl text-white">Log In </h1>
             <form onSubmit={e => onSubmit(e)}>
                 <Grid
                     container
@@ -56,19 +56,20 @@ const Login = () => {
                 >
 
                     <Stack>
-                        <div className="mb-3">
-                            <label className="form-label text-light">Email</label>
+                        <div className="mb-4">
+                            {/* <input type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" /> */}
+                            <label className="form-label text-white">Email</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
 
                             <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                         </div>
-                        <div className="mb-3">
-                            <label className="form-label text-light">Password</label>
+                        <div className="mb-3 rounded">
+                            <label className="form-label text-white">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
 
                         </div>
 
-                        <Link className="my-3" to="/signup" >Don't have  an account? Sign Up here </Link>
+                        <Link className="my-3 text-white" to="/signup" >Don't have  an account? Sign Up here </Link>
                         <Button variant="contained" size="large" type="submit" className="btn btn-primary">Submit</Button>
 
                     </Stack>

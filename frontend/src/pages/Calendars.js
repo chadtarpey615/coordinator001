@@ -61,8 +61,8 @@ const Calendars = () => {
             <div className="row align-items-start">
 
 
-                <div className="col-lg-6 col-sm-12 my-5 ">
-                    <h1 className="mx-5 text-light">Run Fit</h1>
+                <div className="flex flex-col md:flex-row my-5 ">
+                    <h1 className="mx-5 text-white text-4xl">Run Fit</h1>
                 </div>
             </div>
             <div className="row align-items-start">
@@ -70,7 +70,7 @@ const Calendars = () => {
 
                     <DayPicker onDayClick={(e) => setSelectDay(e)} />
                 </div>
-                <div className="col-md-6 col-sm-12 d-flex justify-content-center ">
+                <div className="flex flex-col md:flex-row justify-content-center ">
 
                     <form className="run-form" onSubmit={enterEventHandler}>
                         <h1 className="text-light">Add run event form </h1>
