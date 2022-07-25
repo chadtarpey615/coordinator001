@@ -54,31 +54,33 @@ const Navbars = () => {
     return (
         <>
 
-            <div className="bg-base-100 flex flex-row h-12  items-center">
-                <ul className="justify-items-start">
-                    <li className=" mx-2">
-                        <Link className=" text-white" aria-current="page" to="/">Home</Link>
-                    </li>
-                </ul>
+            <div className="bg-slate-900 px-4 max-w-full space-x-4 flex flex-row h-12 justify-between items-center">
+                <div className="flex ">
+                    <ul className="">
+                        <li className=" mx-2">
+                            <Link className=" text-white" aria-current="page" to="/">Home</Link>
+                        </li>
+                    </ul>
 
-                <ul>
-                    <li className="mx-2" onToggle >
-                        <Link className="text-white" to="/users" >Users</Link>
-                    </li>
-                </ul>
-                <ul>
-                    <li className="mx-2">
-                        <Link className="text-white" to="/calendar"  >Calendar</Link>
-                    </li>
-                </ul>
-                <ul>
-                    <li className="mx-2">
-                        <Link className="text-white" to="/events">All Events</Link>
-                    </li>
-                </ul>
+                    <ul>
+                        <li className="mx-2" onToggle >
+                            <Link className="text-white" to="/users" >Users</Link>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li className="mx-2">
+                            <Link className="text-white" to="/calendar"  >Calendar</Link>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li className="mx-2">
+                            <Link className="text-white" to="/events">All Events</Link>
+                        </li>
+                    </ul>
+                </div>
 
                 {user ? (
-                    <div className="flex justify-end">
+                    <div className="flex">
                         <ul>
 
                             <li className="text-white" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
@@ -92,20 +94,20 @@ const Navbars = () => {
                     </div>
 
                 ) : (
-                        <>
-                            <ul className="">
-                                <li className="mx-2">
-                                    <Link className="text-white" aria-current="page" to="/signup">Sign Up</Link>
-                                </li>
+                    <div className='flex space-x-2'>
+                        <ul className="">
+                            <li className="mx-2">
+                                <Link className="text-white" aria-current="page" to="/signup">Sign Up</Link>
+                            </li>
 
-                            </ul>
-                            <ul>
-                                <li className="mx-2">
-                                    <Link className="text-white" aria-current="page" to="/login">Sign In</Link>
-                                </li>
-                            </ul>
-                        </>
-                    )}
+                        </ul>
+                        <ul>
+                            <li className="mx-2">
+                                <Link className="text-yellow-900 bg-yellow-400 p-2 hover:bg-yellow-800 hover:text-yellow-200 transition duration-300" aria-current="page" to="/login">Sign In</Link>
+                            </li>
+                        </ul>
+                    </div>
+                )}
             </div>
             {/* <nav>
                 <div className="flex flex-row bg-slate-700 h-12 items-center">

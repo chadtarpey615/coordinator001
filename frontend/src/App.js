@@ -14,23 +14,24 @@ import Users from "./pages/Users";
 import Footer from "./components/Footer"
 function App() {
   return (
-
-    <div className="container mx-auto">
+    <>
       <Router>
         <Navbar />
+        <div className="container mx-auto">
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/calendar" element={<Calendars />} />
-          <Route path="/events" element={<Events />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/calendar" element={<Calendars />} />
+            <Route path="/events" element={<Events />} />
+          </Routes>
+        </div>
       </Router>
       <Footer />
       <ToastContainer />
-    </div>
+    </>
 
   );
 }

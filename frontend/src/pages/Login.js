@@ -56,7 +56,7 @@ const Login = () => {
                 >
 
                     <Stack>
-                        <div className="mb-4">
+                        <div className="mb-4 ">
                             {/* <input type="text" placeholder="Type here" class="input input-bordered input-info w-full max-w-xs" /> */}
                             <label className="form-label text-white">Email</label>
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />

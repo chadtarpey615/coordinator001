@@ -56,7 +56,7 @@ const SignUp = () => {
                     alignItems="center"
                 >
                     <Stack>
-                        <div className="mb-3">
+                        <div className="mb-3 flex">
                             <label className="form-label text-white">User Name</label>
                             <TextField fullWidth id="filled-basic" label="User Name" variant="filled" name="username" onChange={e => onChange(e)} />
                         </div>
@@ -65,7 +65,7 @@ const SignUp = () => {
                             <TextField fullWidth id="filled-basic" label="Email" variant="filled" name="email" onChange={e => onChange(e)} />
                             <div id="emailHelp" className=" mt-4 form-text text-white">We'll never share your email with anyone else.</div>
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 ">
                             <label className="form-label text-white">Password</label>
                             <TextField fullWidth id="filled-basic" label="Password" variant="filled" name="password" onChange={e => onChange(e)} />
                         </div>
