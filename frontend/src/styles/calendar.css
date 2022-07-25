@@ -15,9 +15,9 @@
     border: 2px solid rgb(92, 86, 86);
 }
 
-.run-form {
+/* .run-form {
     margin-top: 10px;
-}
+} */
 
 .run-form input {
     margin: auto;
@@ -28,7 +28,7 @@
 .run-form button {
     margin-top: 12px;
     margin-right: 10px;
-    width: 30vw;
+    width: 20vw;
     height: 5vh;
     border-radius: 10px;
 }

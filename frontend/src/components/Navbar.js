@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-
+import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { logout, getUserFriends } from "../features/auth/authSlice"
@@ -36,8 +36,10 @@ const Navbars = () => {
 
         dispatch(logout())
     }
-    const handleOpen = () => setOpen(true)
-    const handleClose = () => setOpen(false);
+    const toggleMobile = () => {
+        setOpen(current => !current)
+    }
+    // const handleClose = () => setOpen(false);
 
     const style = {
         position: 'absolute',
@@ -55,7 +57,7 @@ const Navbars = () => {
         <>
 
             <div className="bg-slate-900 px-4 max-w-full space-x-4 flex flex-row h-12 justify-between items-center">
-                <div className="flex ">
+                <div className="flex hidden md:flex">
                     <ul className="">
                         <li className=" mx-2">
                             <Link className=" text-white" aria-current="page" to="/">Home</Link>
@@ -79,16 +81,24 @@ const Navbars = () => {
                     </ul>
                 </div>
 
+                <div className="flex ">
+                    <h1 className='text-white font-bold text-3xl'>Run Fit</h1>
+                    <button onClick={toggleMobile} className=" mx-4 md:hidden text-white">
+
+                        <MenuIcon />
+                    </button>
+                </div>
+
                 {user ? (
                     <div className="flex">
                         <ul>
 
-                            <li className="text-white" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
+                            <li className="text-white mx-2" aria-current="page"><EmojiPeopleIcon /> {user.username} </li>
 
                         </ul>
                         <ul>
                             <li className="mx-2">
-                                <Link onClick={userLogout} className="text-white" aria-current="page" to="/login">Log Out</Link>
+                                <Link onClick={userLogout} className="text-yellow-900 bg-yellow-400 p-2 hover:bg-yellow-800 hover:text-yellow-200 transition duration-300 rounded " aria-current="page" to="/login">Log Out</Link>
                             </li>
                         </ul>
                     </div>
@@ -108,7 +118,34 @@ const Navbars = () => {
                         </ul>
                     </div>
                 )}
+
             </div>
+            {open &&
+                <div className="mobile px-4 bg-slate-900 ">
+                    <ul>
+                        <li className="mx-2">
+                            <Link className=" text-white" aria-current="page" to="/">Home</Link>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li className="mx-2" onToggle >
+                            <Link className="text-white" to="/users" >Users</Link>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li className="mx-2">
+                            <Link className="text-white" to="/calendar"  >Calendar</Link>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li className="mx-2">
+                            <Link className="text-white" to="/events">All Events</Link>
+                        </li>
+                    </ul>
+                </div>
+            }
+
             {/* <nav>
                 <div className="flex flex-row bg-slate-700 h-12 items-center">
                     <Link className="text-white" to="/signup">Run-Fit</Link>

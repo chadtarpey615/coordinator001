@@ -58,30 +58,30 @@ const Calendars = () => {
     if (isLoading) { return <Spinner /> }
     return (
         <>
-            <div className="row align-items-start">
+            <div className="flex flex-row justify-center">
 
 
                 <div className="flex flex-col md:flex-row my-5 ">
                     <h1 className="mx-5 text-white text-4xl">Run Fit</h1>
                 </div>
             </div>
-            <div className="row align-items-start">
-                <div className="col-md-6 col-sm-12  d-flex justify-content-center">
+            <div className="flex flex-col md:flex-row justify-center md:justify-around ">
+                <div className="flex ">
 
                     <DayPicker onDayClick={(e) => setSelectDay(e)} />
                 </div>
-                <div className="flex flex-col md:flex-row justify-content-center ">
+                <div className="flex justify-center ">
 
-                    <form className="run-form" onSubmit={enterEventHandler}>
-                        <h1 className="text-light">Add run event form </h1>
+                    <form className="run-form sm:mt-5 md:mt-20" onSubmit={enterEventHandler}>
+                        <h1 className="text-white">Add run event form </h1>
 
-                        <div className=" mt-md-5 mt-sm-4">
+                        <div className="flex ">
                             <label htmlFor="name" > </label>
                             <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
 
 
                         </div>
-                        <div >
+                        <div className="flex" >
                             <label htmlFor="date" > </label>
                             <TextField id="filled-basic" label={`${selectDay}`} name="date" variant="filled" onMouseEnter={e => setSelectDay(selectDay)} />
 
@@ -94,8 +94,8 @@ const Calendars = () => {
                         </div>
                         <div className="mt-2">
 
-                            <button>Enter Event</button>
-                            <button><Link to="events">See All Events</Link> </button>
+                            <button className="p-2 bg-blue-600 text-white hover:bg-blue-800 transition duration-300">Enter Event</button>
+                            <button className="p-2 bg-blue-600  hover:bg-blue-800 transition duration-300"><Link to="events">See All Events</Link> </button>
 
                         </div>
                     </form>
