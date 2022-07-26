@@ -94,8 +94,8 @@ const Calendars = () => {
                         </div>
                         <div className="mt-2">
 
-                            <button className="p-2 bg-blue-600 text-white hover:bg-blue-800 transition duration-300">Enter Event</button>
-                            <button className="p-2 bg-blue-600  hover:bg-blue-800 transition duration-300"><Link to="events">See All Events</Link> </button>
+                            <button className="text-sm p-2 bg-blue-600 text-white hover:bg-blue-800 transition duration-300">Enter Event</button>
+                            <button className="text-sm p-2 bg-blue-600  hover:bg-blue-800 transition duration-300"><Link to="events">See All Events</Link> </button>
 
                         </div>
                     </form>

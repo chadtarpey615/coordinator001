@@ -30,41 +30,40 @@ const Users = () => {
     if (isLoading) { return <Spinner /> }
     return (
         <div>
-            <div className="row">
-                <div className="col-md-12 d-flex justify-content-center text-light my-5">
+            <div className="flex justify-center text-white my-5">
 
-                    <h1>Run Fit Users </h1>
-                </div>
+                <h1 className="text-4xl">Run Fit Users </h1>
             </div>
-            <div className="row">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-around ">
                 {users ? users.map((data) => (
-                    <div className="col-md-4 col-sm-6 my-2">
+                    <div className="mx-auto border-2">
 
                         <Card >
-                            <div className="row">
-                                <div className="col-6-md d-flex justify-space-between">
-                                    <img
-                                        src={image}
-                                        class="rounded-circle shadow-4"
-                                        style={{ width: "100px" }}
-                                        alt="Avatar"
-                                    />
-                                    {user.username === data.username ? (
-                                        <h1 className="mx-5 my-5">{data.username}:Your Account</h1>
-                                    ) : (
-                                            <h1 className="mx-5 my-5">{data.username}</h1>
-                                        )}
 
+                            <div className="flex w-68 justify-start ">
+                                <img
+                                    src={image}
+                                    class="rounded-circle shadow-xl w-1/3"
+
+                                    alt="Avatar"
+                                />
+                                <div className="flex flex-col justify-center w-1/3">
+                                    {user.username === data.username ? (
+                                        <h1 className="mx-2 my-5 text-white text-2xl">{data.username}</h1>
+                                    ) : (
+                                        <h1 className=" mx-2 my-5 text-white text-2xl">{data.username}</h1>
+                                    )}
+
+                                    <p className="text-white">Events: {data.events.length}</p>
+                                    <p className="text-white">Friends: {data.friends.length}</p>
+                                    <button className='text-white' onClick={() => addFriend(user, data)}><PeopleIcon /> Add Friend</button>
                                 </div>
                             </div>
-                            <p>Has Events: {data.events.length}</p>
-                            <p>Has Followers: {data.friends.length}</p>
-                            <button onClick={() => addFriend(user, data)}><PeopleIcon /></button>
                         </Card>
                     </div>
                 )) : (
-                        <h1>No Users</h1>
-                    )}
+                    <h1>No Users</h1>
+                )}
             </div>
         </div>
     )

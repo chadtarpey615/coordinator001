@@ -121,62 +121,64 @@ const RunEvents = ({ event, deleteEvent }) => {
         <>
 
             <Card>
-                <DirectionsRunIcon />
-                <h1 class="italic">Event Title: <span>{name}</span></h1>
-                <h4>Date: <span>{date}</span></h4>
-                <h4>Distance: <span>{distance}</span></h4>
-                <h4 >Created by: <span>{creator}</span></h4>
-
-                <h3>Comments</h3>
-
-                {event.comments.map((comment) => (
-                    <div className="card">
-                        <p>{comment.name} : {comment.comment}</p>
-
-                        <DeleteIcon onClick={(e) => eventDeleteComment(e, event, comment._id)} />
-                        <Divider />
-                    </div>
-                ))}
+                <div className="flex flex-col text-white space-x-4 pb-4">
+                    <h1 class=" px-4 my-4 text-2xl font-bold underline">Event Title: <span>{name}</span></h1>
+                    <h4 className='font-bold'>Date: <span className="font-medium">{date}</span></h4>
+                    <h4 className='font-bold'>Distance: <span>{distance}</span></h4>
+                    <h4 className=''  >Created by: <span>{creator}</span></h4>
+                    <DirectionsRunIcon />
 
 
-                <div className="card-btn">
-                    {user._id === event.user ? (
+                    <h3 className='underline font-bold mt-4'>Comments</h3>
 
-                        <button onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
-                    ) : (
+                    {event.comments.map((comment) => (
+                        <div className="">
+                            <p className="text-sm font-bold">{comment.name} : <span className='text-sm'>{comment.comment}</span></p>
 
-                            <button disabled onClick={(e) => deleteEvent(e, _id)}>Not Authorized to Delete</button>
+                            <DeleteIcon onClick={(e) => eventDeleteComment(e, event, comment._id)} />
+                            <Divider />
+                        </div>
+                    ))}
+
+
+                    <div className="card-btn flex justify-center ">
+                        {user._id === event.user ? (
+
+                            <button className=" hover:bg-blue-500" onClick={(e) => deleteEvent(e, _id)}>Delete Event</button>
+                        ) : (
+
+                            <button className="hover:bg-blue-500" disabled onClick={(e) => deleteEvent(e, _id)}>Not Authorized to Delete</button>
                         )}
 
-                    {user._id === event.user ? (
+                        {user._id === event.user ? (
 
-                        <button onClick={(e) => handleOpen(_id)}>Update Event</button>
-                    ) : (
+                            <button className="hover:bg-blue-500" onClick={(e) => handleOpen(_id)}>Update Event</button>
+                        ) : (
 
-                            <button disabled onClick={(e) => handleOpen(_id)}>Not Authorized to Update</button>
+                            <button className="hover:bg-blue-500" disabled onClick={(e) => handleOpen(_id)}>Not Authorized to Update</button>
                         )}
 
-                    <button onClick={() => handleComment(_id)}>Add Comment</button>
+                        <button className="hover:bg-blue-500" onClick={() => handleComment(_id)}>Add Comment</button>
 
-                    {open ? (
-                        <Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={style}>
-                                <Stack spacing={2}>
-                                    <TextField id="filled-basic" label="Update Name" variant="filled" name="name" onChange={e => onChange(e)} />
-                                    <TextField id="filled-basic" label="Update Date" variant="filled" name="date" onChange={e => onChange(e)} />
-                                    <TextField id="filled-basic" label="Update Distance" variant="filled" name="distance" onChange={e => onChange(e)} />
-                                    <Button onClick={() => updatedEvent(_id)} variant="outlined">Update</Button>
+                        {open ? (
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Stack spacing={2}>
+                                        <TextField id="filled-basic" label="Update Name" variant="filled" name="name" onChange={e => onChange(e)} />
+                                        <TextField id="filled-basic" label="Update Date" variant="filled" name="date" onChange={e => onChange(e)} />
+                                        <TextField id="filled-basic" label="Update Distance" variant="filled" name="distance" onChange={e => onChange(e)} />
+                                        <Button onClick={() => updatedEvent(_id)} variant="outlined">Update</Button>
 
 
-                                </Stack>
-                            </Box>
-                        </Modal>
-                    ) : (
+                                    </Stack>
+                                </Box>
+                            </Modal>
+                        ) : (
                             <Modal
                                 open={openComment}
                                 onClose={handleCommentClose}
@@ -198,7 +200,9 @@ const RunEvents = ({ event, deleteEvent }) => {
                             </Modal>
                         )}
 
+                    </div>
                 </div>
+
             </Card>
         </>
     )

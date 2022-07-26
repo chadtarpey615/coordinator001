@@ -15,14 +15,6 @@ const friendsSchema = mongoose.Schema({
         type: String,
         required: true
     }
-    // status: {
-    //     type: Number,
-    //     enums: [
-    //         0,    //'add friend',
-    //         1,    //'requested',
-    //         2,    //'pending',
-    //         3,    //'friends'
-    //     ]
-    // }
+
 }, { timestamps: true })
 module.exports = Friends = mongoose.model('Friends', friendsSchema)

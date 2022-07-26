@@ -21,7 +21,7 @@
 }
 
 .card-btn button {
-    margin: 5px auto;
+    margin: 5px 40px;
     border: 30px;
     border-radius: 20px;
     cursor: pointer;
@@ -36,9 +36,9 @@
     width: 12rem;
 }
 
-.card-btn button:hover {
+/* .card-btn button:hover {
     background-color: rgba(0, 0, 0, 0.09);
-}
+} */
 
 .horizontal-line {
     position: absolute;
