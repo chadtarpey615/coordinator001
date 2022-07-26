@@ -12,10 +12,10 @@ import Box from '@mui/material/Box';
 
 
 const Navbars = () => {
-    const { user, users, friends } = useSelector((state) => state.user)
+    const { user, friends } = useSelector((state) => state.user)
     const [mobile, setMobile] = useState(false)
     const [open, setOpen] = useState(false)
-    const history = useNavigate()
+    // const history = useNavigate()
     const dispatch = useDispatch()
 
 

@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const RunEvents = ({ event, deleteEvent }) => {
     const { user } = useSelector((state) => state.user)
-    const { events } = useSelector((state) => state.events)
+    // const { events } = useSelector((state) => state.events)
 
     const [open, setOpen] = useState(false)
     const [openComment, setOpenComment] = useState(false)

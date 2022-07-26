@@ -13,7 +13,7 @@ import Spinner from "../components/Spinner"
 const Calendars = () => {
 
     const { user, isLoading } = useSelector((state) => state.user)
-    const { events } = useSelector((state) => state.events)
+    // const { events } = useSelector((state) => state.events)
     const [selectDay, setSelectDay] = useState(null)
     const [eventData, setEventData] = useState({
         name: "",
