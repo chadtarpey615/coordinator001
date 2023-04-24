@@ -10,7 +10,7 @@ const initialState = {
     message: ''
 }
 
-export const getEvents = createAsyncThunk("events/all", async (data, thunkAPI) => {
+export const getEvents = createAsyncThunk("events/all", async (data) => {
 
     try
     {

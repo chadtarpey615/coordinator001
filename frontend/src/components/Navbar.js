@@ -68,12 +68,12 @@ const Navbars = () => {
 
                     <ul>
                         <li className="mx-2" onToggle >
-                            <Link className="text-white" to="/users" >Users</Link>
+                            <Link className="text-white" to="/users">Users</Link>
                         </li>
                     </ul>
                     <ul>
                         <li className="mx-2">
-                            <Link className="text-white" to="/calendar"  >Calendar</Link>
+                            <Link className="text-white" to="/calendar">Calendar</Link>
                         </li>
                     </ul>
                     <ul>

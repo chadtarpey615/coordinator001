@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // const db = config.get("mongoURI")
 
 const connectDB = async () => {
-    console.log("herrrrre", process.env.NODE_ENV)
+    console.log("herrrrre", process.env.MONGO_URI)
     try
     {
         const conn = await mongoose.connect(process.env.MONGO_URI || process.env.NODE_ENV)

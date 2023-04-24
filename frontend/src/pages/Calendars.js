@@ -77,7 +77,7 @@ const Calendars = () => {
 
                         <div className="flex ">
                             <label htmlFor="name" > </label>
-                            <TextField id="filled-required" label="Add Event Name " name="name" variant="filled" onChange={e => onChange(e)} />
+                            <TextField id="filled-required" label="Add Event Name" name="name" variant="filled" onChange={e => onChange(e)} />
 
 
                         </div>
